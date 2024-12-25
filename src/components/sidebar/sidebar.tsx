@@ -24,8 +24,8 @@ const Sidebar = () => {
                         className="flex-1 px-3 space-y-1 bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                         <ul className="pb-2 space-y-2">
                             {
-                                menuItems.map((item: any) => (
-                                    <li>
+                                menuItems.map((item: any, index) => (
+                                    <li key={index}>
                                         <Link to={item.url}
                                            className="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700">
                                             <img className="h-8 mr-3" src={item.icon}/>

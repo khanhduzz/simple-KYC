@@ -24,7 +24,7 @@ const Occupation = () => {
                         type="date"
                         id="occupation-from"
                         className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
-                        required
+                        // required
                     />
                 </div>
                 <div>

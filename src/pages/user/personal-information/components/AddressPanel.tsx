@@ -45,7 +45,7 @@ const AddressForm: React.FC = () => {
                             placeholder="Enter country"
                             value={address.country}
                             onChange={(e) => handleChange(index, 'country', e.target.value)}
-                            required
+                            // required
                         />
                     </div>
                     <div>
@@ -59,7 +59,7 @@ const AddressForm: React.FC = () => {
                             placeholder="Enter city"
                             value={address.city}
                             onChange={(e) => handleChange(index, 'city', e.target.value)}
-                            required
+                            // required
                         />
                     </div>
                     <div>
@@ -73,7 +73,7 @@ const AddressForm: React.FC = () => {
                             placeholder="Enter street"
                             value={address.street}
                             onChange={(e) => handleChange(index, 'street', e.target.value)}
-                            required
+                            // required
                         />
                     </div>
                     <div>

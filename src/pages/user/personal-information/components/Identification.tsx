@@ -1,4 +1,10 @@
+import { useFormContext } from "react-hook-form";
+import { UserIdentification } from "../model";
+
 const Identification = () => {
+
+    const { register, formState: { errors } } = useFormContext<UserIdentification>();
+
     return (
         <div className="panel mb-6 dark:text-gray-300 dark:bg-gray-900">
             <h3 className="text-lg font-medium mb-4 text-blue-800 dark:text-gray-300">Identification Documents</h3>
@@ -8,7 +14,8 @@ const Identification = () => {
                     <select
                         id="id-type"
                         className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
-                        required>
+                        {...register("type", { required: "ID type is required" })}
+                    >
                         <option value="national-id">National ID Card</option>
                         <option value="driver-license">Driver License</option>
                     </select>
@@ -19,7 +26,7 @@ const Identification = () => {
                         type="date"
                         id="id-expired"
                         className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
-                        required
+                        {...register("expiryDate", { required: "Expiry date is required" })}
                     />
                 </div>
                 <div>
@@ -28,7 +35,10 @@ const Identification = () => {
                         type="file"
                         id="id-file"
                         className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
-                        required
+                        {...register("file"
+                            // , { required: "Document upload is required" }
+                        )
+                        }
                     />
                 </div>
             </div>

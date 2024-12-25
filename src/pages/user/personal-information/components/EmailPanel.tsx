@@ -12,7 +12,7 @@ const EmailPanel = () => {
                         id="email-address"
                         className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
                         placeholder="Enter email address"
-                        required
+                        // required
                     />
                 </div>
                 <div>

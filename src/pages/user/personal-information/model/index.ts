@@ -1,6 +1,8 @@
 export type UserData = {
   basicInfor: UserBasicInfor;
-  contactInfor: ContactInfor;
+  contactInfor: ContactInfor[];
+  identification: UserIdentification[];
+  occupation: UserOccupation[];
 };
 
 export type UserBasicInfor = {
