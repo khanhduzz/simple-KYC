@@ -1,6 +1,7 @@
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { IdentificationType, UserData } from "../model";
 import ErrorMessage from "../../../../components/error";
+import { useEffect } from "react";
 
 const Identification = () => {
 
@@ -12,6 +13,16 @@ const Identification = () => {
         control,
         name: name,
     });
+
+    useEffect(() => {
+        append({
+            idType: IdentificationType.NationalIdCard,
+            expiryDate: new Date(),
+            file: new File(["dummy content"], "example.txt", { type: "text/plain" })
+        })
+
+        return () => remove(0);
+    }, [])
 
     return (
         <div className="panel mb-6 dark:text-gray-300 dark:bg-gray-900">
@@ -57,21 +68,25 @@ const Identification = () => {
                         <ErrorMessage errors={errors?.identification?.[index]?.file?.message} />
                     </div>
 
-                    <div className="col-span-3">
-                        <button
-                            type="button"
-                            onClick={() => remove(index)}
-                            className="btn-danger px-4 py-2 mt-4 rounded-md"
-                        >
-                            Delete
-                        </button>
-                    </div>
+                    {fields.length > 1 && (
+                        <div className="col-span-3">
+                            <button
+                                type="button"
+                                onClick={() => remove(index)}
+                                className="btn-danger px-4 py-2 mt-4 rounded-md"
+                                disabled={fields.length == 1}
+                            >
+                                Delete
+                            </button>
+                        </div>
+                    )}
                 </fieldset>
             ))}
             <button
                 type="button"
                 onClick={() => append({
-                    idType: IdentificationType.NationalIdCard, expiryDate: new Date(),
+                    idType: IdentificationType.NationalIdCard,
+                    expiryDate: new Date(),
                     file: new File(["dummy content"], "example.txt", { type: "text/plain" })
                 })}
                 className="btn-primary px-4 py-2 mt-4 rounded-md"

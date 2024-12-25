@@ -46,7 +46,7 @@ export type UserPhone = {
 export type UserIdentification = {
   idType: IdentificationType;
   expiryDate: Date;
-  file: File;
+  file?: File;
 };
 
 export type UserOccupation = {
