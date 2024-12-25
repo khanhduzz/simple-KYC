@@ -1,7 +1,7 @@
 :root {
   --primary-color: #1e3a8a;
   --danger-color: #c32828;
-  --danger-second-color: #f77748;
+  --danger-second-color: #f74848;
   --secondary-color: #3b82f6;
   --background-color: #f1f5f9;
   --border-color: #e5e7eb;
@@ -16,12 +16,14 @@ body {
   color: #ffffff;
 }
 .btn-danger {
-  background-color: var(--danger-color);
-  color: #ffffff;
+  border: 1px solid var(--danger-second-color);
+  color: var(--danger-second-color);
 }
 
 .btn-danger:hover {
   background-color: var(--danger-second-color);
+  color: #fff;
+  border: 1px solid var(--danger-second-color);
 }
 .btn-primary:hover {
   background-color: var(--secondary-color);

@@ -19,7 +19,23 @@ const Occupation = () => {
 
             {fields.map((item, index) => (
                 <fieldset key={item.id} className="grid grid-cols-3 gap-4 border rounded-md p-4 mb-4">
-                    <legend className="text-sm font-medium text-gray-600 dark:text-gray-400">Occupation #{index + 1}</legend>
+                    {/* <legend className="text-sm font-medium text-gray-600 dark:text-gray-400">Occupation #{index + 1}</legend> */}
+                    <legend className="text-sm font-medium text-gray-600 dark:text-gray-400 flex justify-between w-full gap-2 items-center">
+                        <div>
+                            Occupation #{index + 1}
+                        </div>
+                        <div>
+                            <button
+                                type="button"
+                                onClick={() => remove(index)}
+                                className="btn-danger px-2 py-1 rounded-md"
+                            >
+                                Delete
+                            </button>
+                            <div className="col-span-3">
+                            </div>
+                        </div>
+                    </legend>
 
                     <div>
                         <label htmlFor={`${name}.${index}.occupation-type`} className="block text-sm font-medium">Occupation</label>
@@ -59,7 +75,7 @@ const Occupation = () => {
                         <ErrorMessage errors={errors?.occupation?.[index]?.toDate?.message} />
                     </div>
 
-                    <div className="col-span-3">
+                    {/* <div className="col-span-3">
                         <button
                             type="button"
                             onClick={() => remove(index)}
@@ -67,7 +83,7 @@ const Occupation = () => {
                         >
                             Delete
                         </button>
-                    </div>
+                    </div> */}
                 </fieldset>
             ))}
 

@@ -18,7 +18,23 @@ const PhonePanel = () => {
 
             {fields.map((item, index) => (
                 <fieldset key={item.id} className="grid grid-cols-3 gap-4 border rounded-md p-4 mb-4">
-                    <legend className="text-sm font-medium text-gray-600 dark:text-gray-400">Phone #{index + 1}</legend>
+                    {/* <legend className="text-sm font-medium text-gray-600 dark:text-gray-400">Phone #{index + 1}</legend> */}
+                    <legend className="text-sm font-medium text-gray-600 dark:text-gray-400 flex justify-between w-full gap-2 items-center">
+                        <div>
+                            Phone #{index + 1}
+                        </div>
+                        <div>
+                            <button
+                                type="button"
+                                onClick={() => remove(index)}
+                                className="btn-danger px-2 py-1 rounded-md"
+                            >
+                                Delete
+                            </button>
+                            <div className="col-span-3">
+                            </div>
+                        </div>
+                    </legend>
 
                     <div>
                         <label htmlFor={`${name}.${index}.phoneNumber`} className="block text-sm font-medium">Phone Number</label>
@@ -65,7 +81,7 @@ const PhonePanel = () => {
                         <ErrorMessage errors={errors?.phones?.[index]?.preferred?.message} />
                     </div>
 
-                    <div className="col-span-3">
+                    {/* <div className="col-span-3">
                         <button
                             type="button"
                             onClick={() => remove(index)}
@@ -73,7 +89,7 @@ const PhonePanel = () => {
                         >
                             Delete
                         </button>
-                    </div>
+                    </div> */}
                 </fieldset>
             ))}
 

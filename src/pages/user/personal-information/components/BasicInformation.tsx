@@ -1,10 +1,9 @@
 import { useFormContext } from "react-hook-form";
 import { UserData } from "../model";
 import ErrorMessage from "../../../../components/error";
-import { getValue } from "@testing-library/user-event/dist/utils";
 
 const BasicInformation = () => {
-    const { register, formState: { errors }, getValues, setValue } = useFormContext<UserData>();
+    const { register, formState: { errors }, setValue } = useFormContext<UserData>();
 
     return (
         <div className="border panel rounded-md p-4 dark:text-gray-300 dark:bg-gray-900">
@@ -15,7 +14,7 @@ const BasicInformation = () => {
                     <input
                         type="text"
                         id="first-name"
-                        className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color  "
+                        className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color"
                         placeholder="Enter your first name"
                         {...register("basicInfor.firstName", { required: "First name is required" })}
                     />

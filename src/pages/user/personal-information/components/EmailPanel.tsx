@@ -17,7 +17,22 @@ const EmailPanel = () => {
 
             {fields.map((item, index) => (
                 <fieldset key={item.id} className="grid grid-cols-2 gap-4 border rounded-md p-4 mb-4">
-                    <legend className="text-sm font-medium text-gray-600 dark:text-gray-400">Email #{index + 1}</legend>
+                    <legend className="text-sm font-medium text-gray-600 dark:text-gray-400 flex justify-between w-full gap-2 items-center">
+                        <div>
+                            Email #{index + 1}
+                        </div>
+                        <div>
+                            <button
+                                type="button"
+                                onClick={() => remove(index)}
+                                className="btn-danger px-2 py-1 rounded-md"
+                            >
+                                Delete
+                            </button>
+                            <div className="col-span-3">
+                            </div>
+                        </div>
+                    </legend>
                     <div>
                         <label htmlFor={`${name}.${index}.emailAddress`} className="block text-sm font-medium">Email Address</label>
                         <input
@@ -62,7 +77,7 @@ const EmailPanel = () => {
                         <ErrorMessage errors={errors?.emails?.[index]?.preferred?.message} />
                     </div>
 
-                    <div className="col-span-3">
+                    {/* <div className="col-span-3">
                         <button
                             type="button"
                             onClick={() => remove(index)}
@@ -70,7 +85,7 @@ const EmailPanel = () => {
                         >
                             Delete
                         </button>
-                    </div>
+                    </div> */}
                 </fieldset>
             ))}
 

@@ -30,7 +30,23 @@ const Identification = () => {
 
             {fields.map((item, index) => (
                 <fieldset key={item.id} className="grid grid-cols-3 gap-4 border rounded-md p-4 mb-4">
-                    <legend className="text-sm font-medium text-gray-600 dark:text-gray-400">Indentification #{index + 1}</legend>
+                    {/* <legend className="text-sm font-medium text-gray-600 dark:text-gray-400">Indentification #{index + 1}</legend> */}
+                    <legend className="text-sm font-medium text-gray-600 dark:text-gray-400 flex justify-between w-full gap-2 items-center">
+                        <div>
+                            Indentification #{index + 1}
+                        </div>
+                        <div>
+                            {fields.length > 1 && (
+                                <button
+                                    type="button"
+                                    onClick={() => remove(index)}
+                                    className="btn-danger px-2 py-1 rounded-md"
+                                >
+                                    Delete
+                                </button>
+                            )}
+                        </div>
+                    </legend>
 
                     <div>
                         <label htmlFor={`${name}.${index}.id-type`} className="block text-sm font-medium">Type</label>
@@ -68,7 +84,7 @@ const Identification = () => {
                         <ErrorMessage errors={errors?.identification?.[index]?.file?.message} />
                     </div>
 
-                    {fields.length > 1 && (
+                    {/* {fields.length > 1 && (
                         <div className="col-span-3">
                             <button
                                 type="button"
@@ -79,7 +95,7 @@ const Identification = () => {
                                 Delete
                             </button>
                         </div>
-                    )}
+                    )} */}
                 </fieldset>
             ))}
             <button
