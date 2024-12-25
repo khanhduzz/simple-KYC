@@ -1,6 +1,8 @@
 export type UserData = {
   basicInfor: UserBasicInfor;
-  contactInfor: ContactInfor[];
+  phones: UserPhone[];
+  emails: UserEmail[];
+  addresses: UserAddress[];
   identification: UserIdentification[];
   occupation: UserOccupation[];
 };
@@ -26,29 +28,57 @@ export type UserAddress = {
   city: string;
   street: string;
   postalCode?: string;
-  type: "mailing" | "work";
+  addressType: AddressType;
 };
 
 export type UserEmail = {
   emailAddress: string;
-  type: "work" | "personal";
+  emailType: EmailType;
   preferred: boolean;
 };
 
 export type UserPhone = {
-  phoneNumber: number;
-  type: "work" | "personal";
+  phoneNumber: string;
+  phoneType: PhoneType;
   preferred: boolean;
 };
 
 export type UserIdentification = {
-  type: "national_id_card" | "driver_license";
+  idType: IdentificationType;
   expiryDate: Date;
   file: File;
 };
 
 export type UserOccupation = {
-  type: "unemployed" | "teacher" | "engineer" | "doctor" | "others";
+  occupationType: OccupationType;
   fromDate: Date;
   toDate: Date;
 };
+
+export enum AddressType {
+  Mailing = "mailing",
+  Work = "work",
+}
+
+export enum EmailType {
+  Work = "work",
+  Personal = "personal",
+}
+
+export enum PhoneType {
+  Work = "work",
+  Personal = "personal",
+}
+
+export enum IdentificationType {
+  NationalIdCard = "national-id-card",
+  DriverLicense = "driver-license",
+}
+
+export enum OccupationType {
+  Unemployed = "unemployed",
+  Teacher = "teacher",
+  Engineer = "engineer",
+  Doctor = "doctor",
+  Others = "others",
+}

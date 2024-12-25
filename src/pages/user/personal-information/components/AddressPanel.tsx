@@ -1,113 +1,104 @@
-import React, { useState } from 'react';
-import { UserAddress } from '../model';
+import React from 'react';
+import { useFormContext, useFieldArray } from 'react-hook-form';
+import ErrorMessage from '../../../../components/error';
+import { AddressType, UserData } from '../model';
 
-const AddressForm: React.FC = () => {
-    const [addresses, setAddresses] = useState<UserAddress[]>([
-        { country: '', city: '', street: '', postalCode: '', type: 'mailing' },
-    ]);
+const AddressPanel: React.FC = () => {
+    const name = "addresses";
 
-    const handleAddAddress = () => {
-        setAddresses([
-            ...addresses,
-            { country: '', city: '', street: '', postalCode: '', type: 'mailing' },
-        ]);
-    };
+    const { register, formState: { errors }, control } = useFormContext<UserData>();
 
-    const handleChange = (
-        index: number,
-        field: keyof UserAddress,
-        value: string
-    ) => {
-        const updatedAddresses = [...addresses];
-        if (field === "type") {
-            updatedAddresses[index][field] = value as UserAddress["type"];
-        } else {
-            updatedAddresses[index][field] = value;
-        }
-        setAddresses(updatedAddresses);
-        console.log(addresses);
-        
-    };
+    const { fields, append, remove } = useFieldArray({
+        control,
+        name: name,
+    });
 
     return (
         <div className="panel mb-6 dark:text-gray-300 dark:bg-gray-900">
-            <h4 className="text-md font-semibold mb-4">Addresses</h4>
-            {addresses.map((address, index) => (
-                <div key={index} className="grid grid-cols-2 gap-4 mb-4">
+            <h3 className="text-lg font-medium mb-4 text-blue-800 dark:text-gray-300">Addresses</h3>
+
+            {fields.map((item, index) => (
+                <fieldset key={item.id} className="grid grid-cols-2 gap-4 border rounded-md p-4 mb-4">
+                    <legend className="text-sm font-medium text-gray-600 dark:text-gray-400">Address #{index + 1}</legend>
+
                     <div>
-                        <label htmlFor={`country-${index}`} className="block text-sm font-medium">
-                            Country
-                        </label>
+                        <label htmlFor={`${name}.${index}.country`} className="block text-sm font-medium">Country</label>
                         <input
                             type="text"
-                            id={`country-${index}`}
+                            id={`${name}.${index}.country`}
+                            {...register(`${name}.${index}.country`, { required: "Country is required" })}
                             className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
                             placeholder="Enter country"
-                            value={address.country}
-                            onChange={(e) => handleChange(index, 'country', e.target.value)}
-                            // required
                         />
+                        <ErrorMessage errors={errors?.[name]?.[index]?.country?.message} />
                     </div>
+
                     <div>
-                        <label htmlFor={`city-${index}`} className="block text-sm font-medium">
-                            City
-                        </label>
+                        <label htmlFor={`${name}.${index}.city`} className="block text-sm font-medium">City</label>
                         <input
                             type="text"
-                            id={`city-${index}`}
+                            id={`${name}.${index}.city`}
+                            {...register(`${name}.${index}.city`, { required: "City is required" })}
                             className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
                             placeholder="Enter city"
-                            value={address.city}
-                            onChange={(e) => handleChange(index, 'city', e.target.value)}
-                            // required
                         />
+                        <ErrorMessage errors={errors?.[name]?.[index]?.city?.message} />
                     </div>
+
                     <div>
-                        <label htmlFor={`street-${index}`} className="block text-sm font-medium">
-                            Street
-                        </label>
+                        <label htmlFor={`${name}.${index}.street`} className="block text-sm font-medium">Street</label>
                         <input
                             type="text"
-                            id={`street-${index}`}
+                            id={`${name}.${index}.street`}
+                            {...register(`${name}.${index}.street`, { required: "Street is required" })}
                             className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
                             placeholder="Enter street"
-                            value={address.street}
-                            onChange={(e) => handleChange(index, 'street', e.target.value)}
-                            // required
                         />
+                        <ErrorMessage errors={errors?.[name]?.[index]?.street?.message} />
                     </div>
+
                     <div>
-                        <label htmlFor={`postal-code-${index}`} className="block text-sm font-medium">
-                            Postal Code
-                        </label>
+                        <label htmlFor={`${name}.${index}.postalCode`} className="block text-sm font-medium">Postal Code</label>
                         <input
                             type="text"
-                            id={`postal-code-${index}`}
+                            id={`${name}.${index}.postalCode`}
+                            {...register(`${name}.${index}.postalCode`, { required: "Postal code is required" })}
                             className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
                             placeholder="Enter postal code"
-                            value={address.postalCode}
-                            onChange={(e) => handleChange(index, 'postalCode', e.target.value)}
                         />
+                        <ErrorMessage errors={errors?.[name]?.[index]?.postalCode?.message} />
                     </div>
+
                     <div>
-                        <label htmlFor={`address-type-${index}`} className="block text-sm font-medium">
-                            Type
-                        </label>
+                        <label htmlFor={`${name}.${index}.type`} className="block text-sm font-medium">Type</label>
                         <select
-                            id={`address-type-${index}`}
+                            id={`${name}.${index}.type`}
+                            {...register(`${name}.${index}.addressType`, { required: "Address type is required" })}
                             className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
-                            value={address.type}
-                            onChange={(e) => handleChange(index, 'type', e.target.value)}
                         >
                             <option value="mailing">Mailing</option>
                             <option value="work">Work</option>
                         </select>
+                        <ErrorMessage errors={errors?.[name]?.[index]?.addressType?.message} />
                     </div>
-                </div>
+
+                    <div className="col-span-2">
+                        <button
+                            type="button"
+                            onClick={() => remove(index)}
+                            className="btn-danger px-4 py-2 mt-4 rounded-md"
+                        >
+                            Delete
+                        </button>
+                    </div>
+                </fieldset>
             ))}
+
             <button
                 type="button"
-                onClick={handleAddAddress}
+                onClick={() =>
+                    append({ country: '', city: '', street: '', postalCode: '', addressType: AddressType.Mailing })
+                }
                 className="btn-primary px-4 py-2 mt-4 rounded-md"
             >
                 Add Address
@@ -116,4 +107,4 @@ const AddressForm: React.FC = () => {
     );
 };
 
-export default AddressForm;
+export default AddressPanel;

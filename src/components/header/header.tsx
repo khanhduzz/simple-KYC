@@ -93,7 +93,7 @@ const Header = () => {
                                             className="flex px-4 py-3 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
                                             <div className="flex-shrink-0">
                                                 <img className="rounded-full w-11 h-11"
-                                                    src="http://localhost:1313/images/users/bonnie-green.png"
+                                                    src="http://localhost:3000/images/users/bonnie-green.png"
                                                     alt="Jese image" />
                                                 <div
                                                     className="absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 border border-white rounded-full bg-primary-700 dark:border-gray-700">
@@ -123,7 +123,7 @@ const Header = () => {
                                             className="flex px-4 py-3 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
                                             <div className="flex-shrink-0">
                                                 <img className="rounded-full w-11 h-11"
-                                                    src="http://localhost:1313/images/users/jese-leos.png"
+                                                    src="http://localhost:3000/images/users/jese-leos.png"
                                                     alt="Jese image" />
                                                 <div
                                                     className="absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-gray-900 border border-white rounded-full dark:border-gray-700">
@@ -151,7 +151,7 @@ const Header = () => {
                                             className="flex px-4 py-3 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
                                             <div className="flex-shrink-0">
                                                 <img className="rounded-full w-11 h-11"
-                                                    src="http://localhost:1313/images/users/joseph-mcfall.png"
+                                                    src="http://localhost:3000/images/users/joseph-mcfall.png"
                                                     alt="Joseph image" />
                                                 <div
                                                     className="absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-red-600 border border-white rounded-full dark:border-gray-700">
@@ -180,7 +180,7 @@ const Header = () => {
                                             className="flex px-4 py-3 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
                                             <div className="flex-shrink-0">
                                                 <img className="rounded-full w-11 h-11"
-                                                    src="http://localhost:1313/images/users/leslie-livingston.png"
+                                                    src="http://localhost:3000/images/users/leslie-livingston.png"
                                                     alt="Leslie image" />
                                                 <div
                                                     className="absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-green-400 border border-white rounded-full dark:border-gray-700">
@@ -209,7 +209,7 @@ const Header = () => {
                                         <a href="#" className="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
                                             <div className="flex-shrink-0">
                                                 <img className="rounded-full w-11 h-11"
-                                                    src="http://localhost:1313/images/users/robert-brown.png"
+                                                    src="http://localhost:3000/images/users/robert-brown.png"
                                                     alt="Robert image" />
                                                 <div
                                                     className="absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-purple-500 border border-white rounded-full dark:border-gray-700">

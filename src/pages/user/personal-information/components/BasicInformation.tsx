@@ -1,4 +1,4 @@
-import { useFormContext, UseFormReturn } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import { UserData } from "../model";
 import ErrorMessage from "../../../../components/error";
 
@@ -18,7 +18,7 @@ const BasicInformation = () => {
                         placeholder="Enter your first name"
                         {...register("basicInfor.firstName", { required: "First name is required" })}
                     />
-                    {<ErrorMessage errors={errors.basicInfor?.firstName?.message} />}
+                    <ErrorMessage errors={errors.basicInfor?.firstName?.message} />
                 </div>
                 <div>
                     <label htmlFor="last-name" className="block text-sm font-medium">Last Name</label>
@@ -29,7 +29,7 @@ const BasicInformation = () => {
                         placeholder="Enter your last name"
                         {...register("basicInfor.lastName", { required: "Last name is required" })}
                     />
-                    {<ErrorMessage errors={errors.basicInfor?.lastName?.message} />}
+                    <ErrorMessage errors={errors.basicInfor?.lastName?.message} />
                 </div>
                 <div>
                     <label htmlFor="middle-name" className="block text-sm font-medium">Middle Name</label>
@@ -49,7 +49,7 @@ const BasicInformation = () => {
                         className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
                         {...register("basicInfor.dateOfBirth", { required: "Date of Birth is required" })}
                     />
-                    {<ErrorMessage errors={errors.basicInfor?.dateOfBirth?.message} />}
+                    <ErrorMessage errors={errors.basicInfor?.dateOfBirth?.message} />
                 </div>
                 <div>
                     <label htmlFor="age" className="block text-sm font-medium">Age</label>
@@ -61,9 +61,6 @@ const BasicInformation = () => {
                         {...register("basicInfor.age")}
                         readOnly
                     />
-                </div>
-                <div className="text-right">
-                    <button type="submit" className="btn-primary px-6 py-3 rounded-md">Submit</button>
                 </div>
             </div>
         </div >
