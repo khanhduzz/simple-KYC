@@ -27,7 +27,7 @@ const AddressPanel: React.FC = () => {
                             type="text"
                             id={`${name}.${index}.country`}
                             {...register(`${name}.${index}.country`, { required: "Country is required" })}
-                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
+                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color"
                             placeholder="Enter country"
                         />
                         <ErrorMessage errors={errors?.[name]?.[index]?.country?.message} />
@@ -39,7 +39,7 @@ const AddressPanel: React.FC = () => {
                             type="text"
                             id={`${name}.${index}.city`}
                             {...register(`${name}.${index}.city`, { required: "City is required" })}
-                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
+                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color"
                             placeholder="Enter city"
                         />
                         <ErrorMessage errors={errors?.[name]?.[index]?.city?.message} />
@@ -51,7 +51,7 @@ const AddressPanel: React.FC = () => {
                             type="text"
                             id={`${name}.${index}.street`}
                             {...register(`${name}.${index}.street`, { required: "Street is required" })}
-                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
+                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color "
                             placeholder="Enter street"
                         />
                         <ErrorMessage errors={errors?.[name]?.[index]?.street?.message} />

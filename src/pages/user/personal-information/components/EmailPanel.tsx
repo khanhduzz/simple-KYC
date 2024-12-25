@@ -30,7 +30,7 @@ const EmailPanel = () => {
                                     message: "Invalid email format",
                                 },
                             })}
-                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
+                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color  "
                             placeholder="Enter email address"
                         />
                         <ErrorMessage errors={errors?.emails?.[index]?.emailAddress?.message} />
@@ -41,7 +41,7 @@ const EmailPanel = () => {
                         <select
                             id={`${name}.${index}.emailType`}
                             {...register(`${name}.${index}.emailType`, { required: "Email type is required" })}
-                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
+                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color  "
                         >
                             <option value="personal">Personal</option>
                             <option value="work">Work</option>
@@ -54,7 +54,7 @@ const EmailPanel = () => {
                         <select
                             id={`${name}.${index}.preferred`}
                             {...register(`${name}.${index}.preferred`, { required: "Preferred status is required" })}
-                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
+                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color  "
                         >
                             <option value="yes">Yes</option>
                             <option value="no">No</option>

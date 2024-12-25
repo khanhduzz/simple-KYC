@@ -14,7 +14,7 @@ const BasicInformation = () => {
                     <input
                         type="text"
                         id="first-name"
-                        className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
+                        className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color  "
                         placeholder="Enter your first name"
                         {...register("basicInfor.firstName", { required: "First name is required" })}
                     />
@@ -25,7 +25,7 @@ const BasicInformation = () => {
                     <input
                         type="text"
                         id="last-name"
-                        className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
+                        className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color  "
                         placeholder="Enter your last name"
                         {...register("basicInfor.lastName", { required: "Last name is required" })}
                     />
@@ -36,7 +36,7 @@ const BasicInformation = () => {
                     <input
                         type="text"
                         id="middle-name"
-                        className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
+                        className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color  "
                         placeholder="Enter your middle name"
                         {...register("basicInfor.middleName")}
                     />
@@ -46,7 +46,7 @@ const BasicInformation = () => {
                     <input
                         type="date"
                         id="dob"
-                        className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
+                        className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color  "
                         {...register("basicInfor.dateOfBirth", { required: "Date of Birth is required" })}
                     />
                     <ErrorMessage errors={errors.basicInfor?.dateOfBirth?.message} />
@@ -56,7 +56,7 @@ const BasicInformation = () => {
                     <input
                         type="number"
                         id="age"
-                        className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
+                        className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color  "
                         placeholder="Enter your age"
                         {...register("basicInfor.age")}
                         readOnly

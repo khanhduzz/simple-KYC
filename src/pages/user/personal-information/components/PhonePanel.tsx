@@ -33,7 +33,7 @@ const PhonePanel = () => {
                                         message: "Invalid phone number format",
                                     }
                                 },)}
-                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
+                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color  "
                             placeholder="Enter phone number"
                         />
                         <ErrorMessage errors={errors?.phones?.[index]?.phoneNumber?.message} />
@@ -44,7 +44,7 @@ const PhonePanel = () => {
                         <select
                             id={`${name}.${index}.type`}
                             {...register(`${name}.${index}.phoneType`, { required: "Phone type is required" })}
-                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
+                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color  "
                         >
                             <option value="personal">Personal</option>
                             <option value="work">Work</option>
@@ -57,7 +57,7 @@ const PhonePanel = () => {
                         <select
                             id={`${name}.${index}.preferred`}
                             {...register(`${name}.${index}.preferred`, { required: "Preferred status is required" })}
-                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
+                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color  "
                         >
                             <option value="yes">Yes</option>
                             <option value="no">No</option>

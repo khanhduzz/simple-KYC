@@ -26,7 +26,7 @@ const Occupation = () => {
                         <select
                             id={`${name}.${index}.occupation-type`}
                             {...register(`${name}.${index}.occupationType`, { required: "Occupation type is required" })}
-                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
+                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color  "
                         >
                             <option value="unemployed">Unemployed</option>
                             <option value="engineer">Engineer</option>
@@ -43,7 +43,7 @@ const Occupation = () => {
                             type="date"
                             id={`${name}.${index}.fromDate`}
                             {...register(`${name}.${index}.fromDate`, { required: "Occupation start date is required" })}
-                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
+                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color  "
                         />
                         <ErrorMessage errors={errors?.occupation?.[index]?.fromDate?.message} />
                     </div>
@@ -54,7 +54,7 @@ const Occupation = () => {
                             type="date"
                             id={`${name}.${index}.toDate`}
                             {...register(`${name}.${index}.toDate`)}
-                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
+                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color  "
                         />
                         <ErrorMessage errors={errors?.occupation?.[index]?.toDate?.message} />
                     </div>
