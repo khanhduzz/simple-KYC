@@ -1,33 +1,59 @@
-import React from 'react'
+import { useFormContext } from "react-hook-form";
+import { PersonalKYC, ExperimentType, RiskPercent } from "../../personal-information/model";
 
-const InvestmentSection = () => {
+const InvestmentSection: React.FC = () => {
+
+    const name = "investments";
+
+    const { register, formState: { errors } } = useFormContext<PersonalKYC>();
+
     return (
         <div className="panel dark:text-gray-300 dark:bg-gray-900">
             <h3 className="text-lg font-medium mb-4">Investment Experience and Objectives</h3>
-            <div className="grid grid-cols-2 gap-4">
-                <div>
-                    <label htmlFor="investment-experience" className="block text-sm font-medium">Experience in Financial Markets</label>
-                    <select
-                        id="investment-experience"
-                        className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900">
-                        <option value="<5-years">&lt; 5 years</option>
-                        <option value="5-10-years">&gt; 5 and &lt; 10 years</option>
-                        <option value=">10-years">&gt; 10 years</option>
-                    </select>
-                </div>
-                <div>
-                    <label htmlFor="risk-tolerance" className="block text-sm font-medium">Risk Tolerance</label>
-                    <select
-                        id="risk-tolerance"
-                        className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900">
-                        <option value="10%">10%</option>
-                        <option value="30%">30%</option>
-                        <option value="all-in">All-in</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    )
-}
 
-export default InvestmentSection
+            <fieldset className="border rounded-md p-4 mb-4 grid grid-cols-2 gap-4">
+                <legend className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                    Investment Information
+                </legend>
+
+                <div>
+                    <label htmlFor={`${name}.experiment`} className="block text-sm font-medium">
+                        Experience in Financial Markets
+                    </label>
+                    <select
+                        id={`${name}.experiment`}
+                        {...register(`${name}.experiment`, { required: "Experience is required" })}
+                        className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
+                    >
+                        <option value={ExperimentType.LessThan5Year}>{ExperimentType.LessThan5Year}</option>
+                        <option value={ExperimentType.From5to10Year}>{ExperimentType.From5to10Year}</option>
+                        <option value={ExperimentType.Over10Year}>{ExperimentType.Over10Year}</option>
+                    </select>
+                    {errors?.[name]?.experiment && (
+                        <p className="text-red-500 text-sm mt-1">{errors?.[name]?.experiment.message}</p>
+                    )}
+                </div>
+
+                <div>
+                    <label htmlFor={`${name}.risk-tolerance`} className="block text-sm font-medium">
+                        Risk Tolerance
+                    </label>
+                    <select
+                        id={`${name}.risk-tolerance`}
+                        {...register(`${name}.riskTolerance`, { required: "Risk tolerance is required" })}
+                        className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color dark:text-gray-900"
+                    >
+                        <option value={RiskPercent.TenPercent}>{RiskPercent.TenPercent}</option>
+                        <option value={RiskPercent.ThirtyPercen}>{RiskPercent.ThirtyPercen}</option>
+                        <option value={RiskPercent.AllIn}>{RiskPercent.AllIn}</option>
+                    </select>
+                    {errors?.[name]?.riskTolerance && (
+                        <p className="text-red-500 text-sm mt-1">{errors?.[name]?.riskTolerance?.message}</p>
+                    )}
+                </div>
+            </fieldset>
+        </div>
+    );
+};
+
+export default InvestmentSection;

@@ -2,6 +2,7 @@ import {RouteObject} from "react-router";
 import PersonalInformation from "./personal-information/personal-information";
 import UserKYC from "./kyc/kyc";
 import User from "./user";
+import UserFormTabs from "./page-tab/merge-tab";
 
 const userRoutes: RouteObject[] = [
     {
@@ -15,6 +16,10 @@ const userRoutes: RouteObject[] = [
             {
                 path: ':id/kyc',
                 element: <UserKYC></UserKYC>
+            },
+            {
+                path: ':id/merge',
+                element: <UserFormTabs></UserFormTabs>
             }
         ]
     }

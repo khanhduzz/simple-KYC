@@ -82,3 +82,78 @@ export enum OccupationType {
   Doctor = "doctor",
   Others = "others",
 }
+
+// KYC
+
+export type PersonalKYC = {
+  basicInfor: UserBasicInfor;
+  incomes: Income[];
+  assets: Asset[];
+  liabilities: Liability[];
+  sourceOfWealths: SourceOfWealth[];
+  netWorths: string;
+  investments: Investment;
+};
+
+export type Income = {
+  incomeType: IncomeType;
+  amount: string;
+};
+
+export type Asset = {
+  assetType: AssetType;
+  amount: string;
+};
+
+export type Liability = {
+  liabilityType: LiabilityType;
+  amount: string;
+  totalAmount: string;
+};
+
+export type SourceOfWealth = {
+  sourceOfWealthType: SourceOfWealthType;
+  amount: string;
+  totalAmount: string;
+};
+
+export type Investment = {
+  experiment: ExperimentType;
+  riskTolerance: RiskPercent;
+};
+
+export enum IncomeType {
+  Salary = "salary",
+  Investment = "investment",
+  Others = "others",
+}
+
+export enum AssetType {
+  Bond = "bond",
+  Liquidity = "liquidity",
+  RealEstate = "real-estate",
+  Others = "others",
+}
+
+export enum LiabilityType {
+  PersonalLoan = "personal-loan",
+  RealEstateLoan = "real-estate-loan",
+  Others = "others",
+}
+
+export enum SourceOfWealthType {
+  Inheritance = "inheritance",
+  Donation = "donation",
+}
+
+export enum ExperimentType {
+  LessThan5Year = "< 5 years",
+  From5to10Year = "> 5 and < 10 years",
+  Over10Year = "> 10 years",
+}
+
+export enum RiskPercent {
+  TenPercent = "10%",
+  ThirtyPercen = "30%",
+  AllIn = "all-in",
+}
