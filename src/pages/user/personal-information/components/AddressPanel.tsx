@@ -3,7 +3,7 @@ import { useFormContext, useFieldArray } from 'react-hook-form';
 import ErrorMessage from '../../../../components/error';
 import { AddressType, UserData } from '../model';
 
-const AddressPanel: React.FC = () => {
+const AddressPanel = () => {
     const name = "addresses";
 
     const { register, formState: { errors }, control } = useFormContext<UserData>();

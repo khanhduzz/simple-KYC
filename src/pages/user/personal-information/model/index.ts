@@ -1,3 +1,17 @@
+/** 
+ * Login =======================================================
+*/
+
+export type LoginData = {
+  email: string,
+  password: string,
+  remember: boolean,
+}
+
+/** 
+ * User information =======================================================
+*/
+
 export type UserData = {
   basicInfor: UserBasicInfor;
   phones: UserPhone[];
@@ -83,7 +97,9 @@ export enum OccupationType {
   Others = "others",
 }
 
-// KYC
+/** 
+ * KYC =================================================================
+*/
 
 export type PersonalKYC = {
   basicInfor: UserBasicInfor;

@@ -1,7 +1,7 @@
 import { useFormContext } from "react-hook-form";
 import { PersonalKYC, ExperimentType, RiskPercent } from "../../personal-information/model";
 
-const InvestmentSection: React.FC = () => {
+const InvestmentSection = () => {
 
     const name = "investments";
 

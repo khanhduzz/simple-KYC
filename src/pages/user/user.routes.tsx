@@ -15,11 +15,11 @@ const userRoutes: RouteObject[] = [
             },
             {
                 path: ':id/kyc',
-                element: <UserKYC></UserKYC>
+                element: <UserKYC />
             },
             {
                 path: ':id/merge',
-                element: <UserFormTabs></UserFormTabs>
+                element: <UserFormTabs />
             }
         ]
     }
