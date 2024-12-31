@@ -1,14 +1,22 @@
 import React, { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthenticatedContext } from "../../shared/Authenticated";
 import { initFlowbite } from "flowbite"
 import DarkModeToggle from "../darkmode";
 
 const Header = () => {
 
+    const { logOut } = useContext(AuthenticatedContext);
+    const navigate = useNavigate();
+
     useEffect(() => {
         initFlowbite();
     }, [])
+
+    const handleLogOut = () => {
+        logOut();
+        navigate("/auth/login");
+    };
 
     const isAuthenticated = useContext(AuthenticatedContext);
     const links: Array<Record<string, string>> = [];
@@ -440,11 +448,11 @@ const Header = () => {
                                         }}>
                                         <div className="px-4 py-3" role="none">
                                             <p className="text-sm text-gray-900 dark:text-white" role="none">
-                                                {isAuthenticated.name}
+                                                {isAuthenticated.user?.name}
                                             </p>
                                             <p className="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
                                                 role="none">
-                                                {isAuthenticated.email}
+                                                {isAuthenticated.user?.email}
                                             </p>
                                         </div>
                                         <ul className="py-1" role="none">
@@ -464,9 +472,10 @@ const Header = () => {
                                                     role="menuitem">Earnings</a>
                                             </li>
                                             <li>
-                                                <a href="#"
+                                                <button 
+                                                    onClick={handleLogOut}
                                                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                                    role="menuitem">Sign out</a>
+                                                    role="menuitem">Sign out</button>
                                             </li>
                                         </ul>
                                     </div>

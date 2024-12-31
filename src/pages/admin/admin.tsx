@@ -1,7 +1,7 @@
 import { Outlet } from "react-router";
 
-const User = () => {
+const Admin = () => {
     return (<Outlet></Outlet>)
 }
 
-export default User;
+export default Admin;

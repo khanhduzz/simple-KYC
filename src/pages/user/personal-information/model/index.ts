@@ -1,19 +1,21 @@
-/** 
+/**
  * Login =======================================================
-*/
+ */
 
 export type LoginData = {
-  email: string,
-  password: string,
-  remember: boolean,
-}
+  email: string;
+  password: string;
+  remember: boolean;
+};
 
-/** 
+/**
  * User information =======================================================
-*/
+ */
 
 export type UserData = {
   basicInfor: UserBasicInfor;
+  role: UserRole;
+  organization?: string;
   phones: UserPhone[];
   emails: UserEmail[];
   addresses: UserAddress[];
@@ -69,6 +71,11 @@ export type UserOccupation = {
   toDate: Date;
 };
 
+export enum UserRole {
+  Admin = "admin",
+  User = "user",
+}
+
 export enum AddressType {
   Mailing = "mailing",
   Work = "work",
@@ -97,9 +104,9 @@ export enum OccupationType {
   Others = "others",
 }
 
-/** 
+/**
  * KYC =================================================================
-*/
+ */
 
 export type PersonalKYC = {
   basicInfor: UserBasicInfor;
@@ -172,4 +179,28 @@ export enum RiskPercent {
   TenPercent = "10%",
   ThirtyPercen = "30%",
   AllIn = "all-in",
+}
+
+/**
+ * Submission =================================================================
+ */
+
+export type SubmissionData = {
+  id: string;
+  name: string;
+  status: SubmissionStatus;
+  date: string;
+  action: SubmissionAction;
+};
+
+export enum SubmissionStatus {
+  Active = "Active",
+  Inactive = "Inactive",
+  Pending = "Pending",
+}
+
+export enum SubmissionAction {
+  Approve = "Approve",
+  Reject = "Reject",
+  Waiting = "Waiting",
 }

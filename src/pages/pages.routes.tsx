@@ -2,6 +2,7 @@ import HomeComponent from "./home/HomeComponent";
 import userRoutes from "./user/user.routes";
 import Pages from "./pages";
 import authRoutes from "./auth/auth.routes";
+import adminRoutes from "./admin/admin.routes";
 
 
 const pageRoutes = [
@@ -13,8 +14,8 @@ const pageRoutes = [
                 path: 'home',
                 element: <HomeComponent/>
             },
-            ...authRoutes,
-            ...userRoutes
+            ...userRoutes,
+            ...adminRoutes,
         ]
     },
 

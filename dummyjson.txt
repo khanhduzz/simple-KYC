@@ -1,0 +1,10 @@
+- Update with 'Accepted' respone:
+    https://dummyjson.com/c/a67d-5056-4e62-89ff
+- Get submission information:
+    https://dummyjson.com/c/6029-9dd5-4551-a2ad
+
+    https://dummyjson.com/c/5a22-8836-417c-90c6
+- Update with 'Rejected' response:
+    https://dummyjson.com/c/cedc-55ba-42aa-b2cb
+- Get user information: admin:
+    https://dummyjson.com/c/a93a-819a-4dc3-8a4e

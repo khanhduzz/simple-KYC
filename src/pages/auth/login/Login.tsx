@@ -1,9 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { LoginData } from "../../user/personal-information/model";
+import { useContext } from "react";
+import { AuthenticatedContext } from "../../../shared/Authenticated";
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<LoginData>();
+    const isAuthenticated = useContext(AuthenticatedContext)
     const navigate = useNavigate();
 
     const onSubmit = (data: LoginData) => {
@@ -23,9 +26,16 @@ const Login = () => {
                 return res.json();
             })
             .then(data => {
-                console.log("Login successful", data);
+                console.log("Login successful");
                 sessionStorage.setItem('accessToken', data.accessToken);
-                navigate('/');
+                let u: any = {
+                    name: "a",
+                    email: "aa",
+                }
+
+                isAuthenticated.setUser(u);
+                sessionStorage.setItem("user", JSON.stringify(u));
+                return navigate('/pages/user/profile');
             })
             .catch(error => {
                 console.error("Login failed", error);
@@ -48,6 +58,7 @@ const Login = () => {
                         <input
                             type="email"
                             id="email"
+                            defaultValue="carter@gmail.com"
                             placeholder="name@company.com"
                             className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             {...register("email", { required: "Email is required", pattern: /^[^@]+@[^@]+\.[^@]+$/ })}
@@ -59,6 +70,7 @@ const Login = () => {
                         <input
                             type="password"
                             id="password"
+                            defaultValue="Test124!aaaaaa"
                             placeholder="••••••••"
                             className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             {...register("password", {

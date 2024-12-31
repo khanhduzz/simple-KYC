@@ -2,17 +2,18 @@ import Header from "../components/header/header";
 import Sidebar from "../components/sidebar/sidebar";
 import { Navigate, Outlet } from "react-router";
 import Footer from "../components/footer/footer";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AuthenticatedContext } from "../shared/Authenticated";
-import Login from "./auth/login/Login";
+
 const Pages = () => {
     const isAuthenticated = useContext(AuthenticatedContext)
-
+    console.log("Authen: ", isAuthenticated);
+    console.log("Re render");
     return (
         <>
             <Header />
 
-            {isAuthenticated ? (
+            {isAuthenticated.user ? (
                 <div className="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
                     <Sidebar />
                     <div id="main-content"
@@ -23,9 +24,7 @@ const Pages = () => {
                         </main>
                     </div>
                 </div>
-            ) :
-                <Login />
-                // <Navigate to={'auth/login'} />
+            ) : <Navigate to={'/auth/login'} />
 
             }
 

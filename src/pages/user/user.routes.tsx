@@ -1,17 +1,18 @@
-import {RouteObject} from "react-router";
+import { RouteObject } from "react-router";
 import PersonalInformation from "./personal-information/personal-information";
 import UserKYC from "./kyc/kyc";
 import User from "./user";
 import UserFormTabs from "./page-tab/merge-tab";
+import UserProfile from "./profile/user-profile";
 
 const userRoutes: RouteObject[] = [
     {
         path: 'user',
-        element: <User/>,
+        element: <User />,
         children: [
             {
                 path: ':id/pi',
-                element: <PersonalInformation/>
+                element: <PersonalInformation />
             },
             {
                 path: ':id/kyc',
@@ -20,6 +21,10 @@ const userRoutes: RouteObject[] = [
             {
                 path: ':id/merge',
                 element: <UserFormTabs />
+            },
+            {
+                path: 'profile',
+                element: <UserProfile />
             }
         ]
     }
