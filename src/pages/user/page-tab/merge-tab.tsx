@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import Breadcrumb from "../../../components/breadscrum/breadscum";
-import { PersonalKYC, UserData } from "../personal-information/model";
+import { UserData } from "../personal-information/model";
 import BasicInformation from "../personal-information/components/BasicInformation";
 import AddressPanel from "../personal-information/components/AddressPanel";
 import EmailPanel from "../personal-information/components/EmailPanel";
@@ -23,7 +23,6 @@ const breadcrumbItems = [
 
 type CombinedFormData = {
     personalInfor: UserData
-    personalKYC: PersonalKYC
 };
 
 const UserFormTabs = () => {

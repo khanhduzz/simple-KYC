@@ -7,6 +7,7 @@ import { UserData } from "./model";
 import AddressPanel from "./components/AddressPanel";
 import PhonePanel from "./components/PhonePanel";
 import EmailPanel from "./components/EmailPanel";
+import { useEffect, useState } from "react";
 
 const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -17,10 +18,34 @@ const breadcrumbItems = [
 const PersonalInformation = () => {
 
     const methods = useForm<UserData>();
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('https://dummyjson.com/c/937c-69ba-4619-bbff');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch user data');
+                }
+                const data: UserData = await response.json();
+                methods.reset(data);
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, [methods]);
 
     const onSubmit = methods.handleSubmit((data) => {
         console.log(data);
     });
+
+    if (loading) {
+        return <div className="text-center mt-6">Loading...</div>;
+    }
 
     return (
         <div className="grid grid-cols-1 px-4 pt-6 xl:gap-4 dark:bg-gray-900">

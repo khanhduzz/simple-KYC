@@ -8,3 +8,4 @@
     https://dummyjson.com/c/cedc-55ba-42aa-b2cb
 - Get user information: admin:
     https://dummyjson.com/c/a93a-819a-4dc3-8a4e
+    https://dummyjson.com/c/937c-69ba-4619-bbff

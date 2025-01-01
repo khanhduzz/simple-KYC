@@ -1,8 +1,8 @@
 import { useFormContext } from "react-hook-form";
-import { PersonalKYC } from "../../personal-information/model";
+import { UserData } from "../../personal-information/model";
 
 const NetworthSection = () => {
-    const { watch, setValue, register } = useFormContext<PersonalKYC>();
+    const { watch, setValue, register } = useFormContext<UserData>();
 
     const assets = watch("assets") || [];
     const liabilities = watch("liabilities") || [];

@@ -1,10 +1,10 @@
 import { useFieldArray, useFormContext } from "react-hook-form";
-import { LiabilityType, PersonalKYC } from "../../personal-information/model";
+import { LiabilityType, UserData } from "../../personal-information/model";
 
 const LiabilitySection = () => {
     const name = "liabilities";
 
-    const { register, formState: { errors }, control, watch } = useFormContext<PersonalKYC>();
+    const { register, formState: { errors }, control, watch } = useFormContext<UserData>();
 
     const { fields, append, remove } = useFieldArray({
         control,

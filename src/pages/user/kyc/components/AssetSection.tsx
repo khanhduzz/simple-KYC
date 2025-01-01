@@ -1,10 +1,10 @@
 import { useFieldArray, useFormContext } from "react-hook-form";
-import { AssetType, PersonalKYC } from "../../personal-information/model";
+import { AssetType, UserData } from "../../personal-information/model";
 
 const AssetSection = () => {
   const name = "assets";
 
-  const { register, formState: { errors }, control } = useFormContext<PersonalKYC>();
+  const { register, formState: { errors }, control } = useFormContext<UserData>();
 
   const { fields, append, remove } = useFieldArray({
     control,

@@ -1,11 +1,11 @@
 import { useFormContext } from "react-hook-form";
-import { PersonalKYC, ExperimentType, RiskPercent } from "../../personal-information/model";
+import { ExperimentType, RiskPercent, UserData } from "../../personal-information/model";
 
 const InvestmentSection = () => {
 
     const name = "investments";
 
-    const { register, formState: { errors } } = useFormContext<PersonalKYC>();
+    const { register, formState: { errors } } = useFormContext<UserData>();
 
     return (
         <div className="panel dark:text-gray-300 dark:bg-gray-900">

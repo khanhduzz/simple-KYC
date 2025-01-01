@@ -1,10 +1,10 @@
 import { useFieldArray, useFormContext } from "react-hook-form";
-import { IncomeType, PersonalKYC } from "../../personal-information/model";
+import { IncomeType, UserData } from "../../personal-information/model";
 
 const IncomeSession = () => {
     const name = "incomes";
 
-    const { register, formState: { errors }, control } = useFormContext<PersonalKYC>();
+    const { register, formState: { errors }, control } = useFormContext<UserData>();
 
     const { fields, append, remove } = useFieldArray({
         control,

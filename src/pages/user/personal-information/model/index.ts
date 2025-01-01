@@ -21,6 +21,12 @@ export type UserData = {
   addresses: UserAddress[];
   identification: UserIdentification[];
   occupation: UserOccupation[];
+  incomes?: Income[];
+  assets?: Asset[];
+  liabilities?: Liability[];
+  sourceOfWealths?: SourceOfWealth[];
+  netWorths?: string;
+  investments?: Investment;
 };
 
 export type UserBasicInfor = {
@@ -103,20 +109,6 @@ export enum OccupationType {
   Doctor = "doctor",
   Others = "others",
 }
-
-/**
- * KYC =================================================================
- */
-
-export type PersonalKYC = {
-  basicInfor: UserBasicInfor;
-  incomes: Income[];
-  assets: Asset[];
-  liabilities: Liability[];
-  sourceOfWealths: SourceOfWealth[];
-  netWorths: string;
-  investments: Investment;
-};
 
 export type Income = {
   incomeType: IncomeType;
