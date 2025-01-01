@@ -1,6 +1,7 @@
-import { useFormContext } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import { UserData } from "../model";
 import ErrorMessage from "../../../../components/error";
+import { useEffect, useState } from "react";
 
 type Props = {
     disable?: boolean
@@ -50,9 +51,6 @@ const BasicInformation = ({ disable = false }: Props) => {
                     <input
                         type="date"
                         id="dob"
-                        defaultValue={watch("basicInfor.dateOfBirth")
-                            ? watch("basicInfor.dateOfBirth")
-                            : ""}
                         className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color"
                         {...register("basicInfor.dateOfBirth", {
                             required: "Date of Birth is required", onChange(event) {
@@ -69,7 +67,7 @@ const BasicInformation = ({ disable = false }: Props) => {
                     />
                     <ErrorMessage errors={errors.basicInfor?.dateOfBirth?.message} />
                 </div>
-
+                
                 <div>
                     <label htmlFor="age" className="block text-sm font-medium">Age</label>
                     <input

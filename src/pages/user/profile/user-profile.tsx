@@ -14,11 +14,10 @@ const UserProfile = (props: Props) => {
     const [userData, setUserData] = useState<UserData | null>(null);
     const [loading, setLoading] = useState(true);
 
-    // Fetch user data
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://dummyjson.com/c/937c-69ba-4619-bbff'); // Replace with your API endpoint
+                const response = await fetch('https://dummyjson.com/c/937c-69ba-4619-bbff');
                 const data: UserData = await response.json();
                 setUserData(data);
             } catch (error) {

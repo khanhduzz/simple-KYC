@@ -41,7 +41,7 @@ input {
 
 /* CSS for disabling the form when 'disabled' class is added */
 .disabled {
-  pointer-events: none;
+  /* pointer-events: none; */
   /* opacity: 0.5; */
 }
 

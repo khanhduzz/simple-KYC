@@ -1,9 +1,9 @@
-import {Outlet} from "react-router";
+import { Outlet } from "react-router";
 
-const Auth = ()  => {
+const Auth = () => {
 
     return (
-            <Outlet></Outlet>
+        <Outlet></Outlet>
     )
 }
 

@@ -31,11 +31,12 @@ const Login = () => {
                 let u: any = {
                     name: "a",
                     email: "aa",
+                    role: "user",
                 }
 
                 isAuthenticated.setUser(u);
                 sessionStorage.setItem("user", JSON.stringify(u));
-                return navigate('/pages/user/profile');
+                return navigate('/');
             })
             .catch(error => {
                 console.error("Login failed", error);

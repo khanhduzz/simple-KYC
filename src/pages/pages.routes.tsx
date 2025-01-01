@@ -1,8 +1,10 @@
 import HomeComponent from "./home/HomeComponent";
 import userRoutes from "./user/user.routes";
 import Pages from "./pages";
-import authRoutes from "./auth/auth.routes";
 import adminRoutes from "./admin/admin.routes";
+import errorRoutes from "./error/error.routes";
+import NotFound from "./error/404";
+import { Navigate } from "react-router";
 
 
 const pageRoutes = [
@@ -16,9 +18,13 @@ const pageRoutes = [
             },
             ...userRoutes,
             ...adminRoutes,
+            ...errorRoutes,
+            {
+                path: '*',
+                element: <Navigate to="error/not-found" replace />,
+            },
         ]
     },
-
 ]
 
 export default pageRoutes;

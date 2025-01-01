@@ -1,9 +1,10 @@
-import { RouteObject } from "react-router";
+import { Navigate, RouteObject } from "react-router";
 import Admin from "./admin";
 import Submission from "./kyc-submission/submission";
 import PersonalInformation from "../user/personal-information/personal-information";
 import UserKYC from "../user/kyc/kyc";
 import UserFormTabs from "../user/page-tab/merge-tab";
+import NotFound from "../error/404";
 
 const adminRoutes: RouteObject[] = [
     {
@@ -11,12 +12,16 @@ const adminRoutes: RouteObject[] = [
         element: <Admin />,
         children: [
             {
+                path: "",
+                element: <Navigate to="kyc-submissions" replace />,
+            },
+            {
                 path: ':id/pi',
-                element: <PersonalInformation />
+                element: <PersonalInformation disable={true}/>
             },
             {
                 path: ':id/kyc',
-                element: <UserKYC />
+                element: <UserKYC disable={true}/>
             },
             {
                 path: ':id/merge',
@@ -25,7 +30,7 @@ const adminRoutes: RouteObject[] = [
             {
                 path: 'kyc-submissions',
                 element: <Submission />
-            }
+            },
         ]
     }
 ]
