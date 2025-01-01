@@ -2,7 +2,11 @@ import { useFormContext, useFieldArray } from "react-hook-form";
 import ErrorMessage from "../../../../components/error";
 import { PhoneType, UserData } from "../model";
 
-const PhonePanel = () => {
+type Props = {
+    disable?: boolean
+}
+
+const PhonePanel = ({ disable = false }: Props) => {
     const name = "phones";
 
     const { register, formState: { errors }, control } = useFormContext<UserData>();
@@ -13,7 +17,7 @@ const PhonePanel = () => {
     });
 
     return (
-        <div className="panel mb-6 dark:text-gray-300 dark:bg-gray-900">
+        <div className={`panel mb-6 dark:text-gray-300 dark:bg-gray-900 ${disable ? 'disabled' : ''}`}>
             <h3 className="text-lg font-medium mb-4 text-blue-800 dark:text-gray-300">Phones</h3>
 
             {fields.map((item, index) => (

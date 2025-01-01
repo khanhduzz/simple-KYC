@@ -3,7 +3,11 @@ import { IdentificationType, UserData } from "../model";
 import ErrorMessage from "../../../../components/error";
 import { useEffect } from "react";
 
-const Identification = () => {
+type Props = {
+    disable?: boolean
+}
+
+const Identification = ({ disable = false }: Props) => {
 
     const name = "identification";
 
@@ -17,7 +21,7 @@ const Identification = () => {
     useEffect(() => {
         append({
             idType: IdentificationType.NationalIdCard,
-            expiryDate: new Date(),
+            expiryDate: "",
             file: new File(["dummy content"], "example.txt", { type: "text/plain" })
         })
 
@@ -25,12 +29,11 @@ const Identification = () => {
     }, [])
 
     return (
-        <div className="panel mb-6 dark:text-gray-300 dark:bg-gray-900">
+        <div className={`panel mb-6 dark:text-gray-300 dark:bg-gray-900 ${disable ? 'disabled' : ''}`}>
             <h3 className="text-lg font-medium mb-4 text-blue-800 dark:text-gray-300">Identification Documents</h3>
 
             {fields.map((item, index) => (
                 <fieldset key={item.id} className="grid grid-cols-3 gap-4 border rounded-md p-4 mb-4">
-                    {/* <legend className="text-sm font-medium text-gray-600 dark:text-gray-400">Indentification #{index + 1}</legend> */}
                     <legend className="text-sm font-medium text-gray-600 dark:text-gray-400 flex justify-between w-full gap-2 items-center">
                         <div>
                             Indentification #{index + 1}
@@ -83,26 +86,13 @@ const Identification = () => {
                         />
                         <ErrorMessage errors={errors?.identification?.[index]?.file?.message} />
                     </div>
-
-                    {/* {fields.length > 1 && (
-                        <div className="col-span-3">
-                            <button
-                                type="button"
-                                onClick={() => remove(index)}
-                                className="btn-danger px-4 py-2 mt-4 rounded-md"
-                                disabled={fields.length == 1}
-                            >
-                                Delete
-                            </button>
-                        </div>
-                    )} */}
                 </fieldset>
             ))}
             <button
                 type="button"
                 onClick={() => append({
                     idType: IdentificationType.NationalIdCard,
-                    expiryDate: new Date(),
+                    expiryDate: "",
                     file: new File(["dummy content"], "example.txt", { type: "text/plain" })
                 })}
                 className="btn-primary px-4 py-2 mt-4 rounded-md"

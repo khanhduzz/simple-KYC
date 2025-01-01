@@ -38,3 +38,16 @@ body {
 input {
   @apply dark:text-gray-900 dark:bg-[#cecdcd];
 }
+
+/* CSS for disabling the form when 'disabled' class is added */
+.disabled {
+  pointer-events: none;
+  /* opacity: 0.5; */
+}
+
+.disabled input,
+.disabled select,
+.disabled button {
+  pointer-events: none;
+  opacity: 0.7;
+}

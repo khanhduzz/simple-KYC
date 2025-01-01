@@ -2,7 +2,11 @@ import { useFormContext, useFieldArray } from "react-hook-form";
 import { OccupationType, UserData } from "../model";
 import ErrorMessage from "../../../../components/error";
 
-const Occupation = () => {
+type Props = {
+    disable?: boolean
+}
+
+const Occupation = ({ disable = false }: Props) => {
 
     const name = "occupation";
 
@@ -14,7 +18,7 @@ const Occupation = () => {
     });
 
     return (
-        <div className="panel mb-6 dark:text-gray-300 dark:bg-gray-900">
+        <div className={`panel mb-6 dark:text-gray-300 dark:bg-gray-900 ${disable ? 'disabled' : ''}`}>
             <h3 className="text-lg font-medium mb-4 text-blue-800 dark:text-gray-300">Occupations</h3>
 
             {fields.map((item, index) => (
@@ -89,7 +93,7 @@ const Occupation = () => {
 
             <button
                 type="button"
-                onClick={() => append({ occupationType: OccupationType.Unemployed, fromDate: new Date(), toDate: new Date() })}
+                onClick={() => append({ occupationType: OccupationType.Unemployed, fromDate: "", toDate: "" })}
                 className="btn-primary px-4 py-2 mt-4 rounded-md"
             >
                 Add Occupation

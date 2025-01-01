@@ -1,7 +1,11 @@
 import { useFormContext } from "react-hook-form";
 import { UserData } from "../../personal-information/model";
 
-const NetworthSection = () => {
+type Props = {
+    disable?: boolean
+}
+
+const NetworthSection = ({ disable = false }: Props) => {
     const { watch, setValue, register } = useFormContext<UserData>();
 
     const assets = watch("assets") || [];
@@ -19,7 +23,7 @@ const NetworthSection = () => {
     setValue("netWorths", netWorth.toString());
 
     return (
-        <div className="panel dark:text-gray-300 dark:bg-gray-900">
+        <div className={`panel dark:text-gray-300 dark:bg-gray-900 ${disable ? 'disabled' : ''}`}>
             <h3 className="text-lg font-medium mb-4">Net Worth</h3>
             <div>
                 <label htmlFor="net-worth-total" className="block text-sm font-medium">Total</label>

@@ -15,7 +15,11 @@ const breadcrumbItems = [
     { label: 'Personal Information', current: true },
 ];
 
-const PersonalInformation = () => {
+type Props = {
+    disable?: boolean
+}
+
+const PersonalInformation = ({ disable = true }: Props) => {
 
     const methods = useForm<UserData>();
     const [loading, setLoading] = useState(true);
@@ -23,7 +27,7 @@ const PersonalInformation = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://dummyjson.com/c/937c-69ba-4619-bbff');
+                const response = await fetch('https://dummyjson.com/c/3482-3c28-49a8-872e');
                 if (!response.ok) {
                     throw new Error('Failed to fetch user data');
                 }
@@ -48,7 +52,7 @@ const PersonalInformation = () => {
     }
 
     return (
-        <div className="grid grid-cols-1 px-4 pt-6 xl:gap-4 dark:bg-gray-900">
+        <div className={`grid grid-cols-1 px-4 pt-6 xl:gap-4 dark:bg-gray-900 ${disable ? 'disabled' : ''}`}>
             <Breadcrumb items={breadcrumbItems} />
 
             <FormProvider {...methods}>

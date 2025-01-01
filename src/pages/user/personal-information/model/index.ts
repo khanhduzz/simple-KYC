@@ -33,7 +33,7 @@ export type UserBasicInfor = {
   firstName: string;
   lastName: string;
   middleName?: string;
-  dateOfBirth: Date;
+  dateOfBirth: string;
   age: number;
 };
 
@@ -67,14 +67,14 @@ export type UserPhone = {
 
 export type UserIdentification = {
   idType: IdentificationType;
-  expiryDate: Date;
+  expiryDate: string;
   file?: File;
 };
 
 export type UserOccupation = {
   occupationType: OccupationType;
-  fromDate: Date;
-  toDate: Date;
+  fromDate: string;
+  toDate: string;
 };
 
 export enum UserRole {

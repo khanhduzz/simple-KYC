@@ -1,7 +1,11 @@
 import { useFieldArray, useFormContext } from "react-hook-form";
-import {  SourceOfWealthType, UserData } from "../../personal-information/model";
+import { SourceOfWealthType, UserData } from "../../personal-information/model";
 
-const WealthSection = () => {
+type Props = {
+    disable?: boolean
+}
+
+const WealthSection = ({ disable = false }: Props) => {
     const name = "sourceOfWealths";
 
     const { register, formState: { errors }, control, watch } = useFormContext<UserData>();
@@ -15,7 +19,7 @@ const WealthSection = () => {
     const totalWealth = wealth.reduce((total, item) => total + (Number(item.amount) || 0), 0);
 
     return (
-        <div className="panel dark:text-gray-300 dark:bg-gray-900">
+        <div className={`panel dark:text-gray-300 dark:bg-gray-900 ${disable ? 'disabled' : ''}`}>
             <h3 className="text-lg font-medium mb-4">Source of Wealth (D)</h3>
             <p className="text-sm mb-4 text-gray-600">
                 This section identifies the origin of your wealth, such as any inheritance or donations you may have received. It's important for financial transparency.

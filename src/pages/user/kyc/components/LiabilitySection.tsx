@@ -1,7 +1,11 @@
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { LiabilityType, UserData } from "../../personal-information/model";
 
-const LiabilitySection = () => {
+type Props = {
+    disable?: boolean
+}
+
+const LiabilitySection = ({ disable = false }: Props) => {
     const name = "liabilities";
 
     const { register, formState: { errors }, control, watch } = useFormContext<UserData>();
@@ -15,7 +19,7 @@ const LiabilitySection = () => {
     const totalLiabilities = liabilities.reduce((total, item) => total + (Number(item.amount) || 0), 0);
 
     return (
-        <div className="panel dark:text-gray-300 dark:bg-gray-900">
+        <div className={`panel dark:text-gray-300 dark:bg-gray-900 ${disable ? 'disabled' : ''}`}>
             <h3 className="text-lg font-medium mb-4">Liabilities (C)</h3>
             <p className="text-sm mb-4 text-gray-600">
                 Liabilities are any outstanding debts or obligations you may have. These can include loans such as personal loans, mortgages, or other forms of debt.

@@ -1,14 +1,18 @@
 import { useFormContext } from "react-hook-form";
 import { ExperimentType, RiskPercent, UserData } from "../../personal-information/model";
 
-const InvestmentSection = () => {
+type Props = {
+    disable?: boolean
+}
+
+const InvestmentSection = ({ disable = false }: Props) => {
 
     const name = "investments";
 
     const { register, formState: { errors } } = useFormContext<UserData>();
 
     return (
-        <div className="panel dark:text-gray-300 dark:bg-gray-900">
+        <div className={`panel dark:text-gray-300 dark:bg-gray-900 ${disable ? 'disabled' : ''}`}>
             <h3 className="text-lg font-medium mb-4">Investment Experience and Objectives</h3>
 
             <fieldset className="border rounded-md p-4 mb-4 grid grid-cols-2 gap-4">

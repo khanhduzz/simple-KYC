@@ -15,22 +15,25 @@ const breadcrumbItems = [
     { label: 'Personal KYC', current: true },
 ];
 
-const UserKYC = () => {
+type Props = {
+    disable?: boolean
+}
+
+const UserKYC = ({ disable = true }: Props) => {
 
     const methods = useForm<UserData>();
 
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Fetch user data from API
         const fetchData = async () => {
             try {
-                const response = await fetch('https://dummyjson.com/c/937c-69ba-4619-bbff'); // Replace with your API endpoint
+                const response = await fetch('https://dummyjson.com/c/937c-69ba-4619-bbff');
                 if (!response.ok) {
                     throw new Error('Failed to fetch user data');
                 }
                 const data: UserData = await response.json();
-                methods.reset(data); // Populate the form with the fetched data
+                methods.reset(data);
             } catch (error) {
                 console.error("Error fetching user data:", error);
             } finally {
@@ -50,7 +53,7 @@ const UserKYC = () => {
     }
 
     return (
-        <div className="grid grid-cols-1 px-4 pt-6 xl:gap-4 dark:bg-gray-900">
+        <div className={`grid grid-cols-1 px-4 pt-6 xl:gap-4 dark:bg-gray-900 ${disable ? 'disabled' : ''}`}>
             <Breadcrumb items={breadcrumbItems} />
 
             <FormProvider {...methods}>

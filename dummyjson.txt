@@ -9,3 +9,5 @@
 - Get user information: admin:
     https://dummyjson.com/c/a93a-819a-4dc3-8a4e
     https://dummyjson.com/c/937c-69ba-4619-bbff
+
+    https://dummyjson.com/c/3482-3c28-49a8-872e

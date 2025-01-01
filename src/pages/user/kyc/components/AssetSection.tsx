@@ -1,7 +1,11 @@
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { AssetType, UserData } from "../../personal-information/model";
 
-const AssetSection = () => {
+type Props = {
+  disable?: boolean
+}
+
+const AssetSection = ({ disable = false }: Props) => {
   const name = "assets";
 
   const { register, formState: { errors }, control } = useFormContext<UserData>();
@@ -12,7 +16,7 @@ const AssetSection = () => {
   });
 
   return (
-    <div className="panel dark:text-gray-300 dark:bg-gray-900">
+    <div className={`panel dark:text-gray-300 dark:bg-gray-900 ${disable ? 'disabled' : ''}`}>
       <h3 className="text-lg font-medium mb-4">Assets (B)</h3>
 
       {fields.map((item, index) => (

@@ -1,7 +1,11 @@
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { IncomeType, UserData } from "../../personal-information/model";
 
-const IncomeSession = () => {
+type Props = {
+    disable?: boolean
+}
+
+const IncomeSession = ({ disable = false }: Props) => {
     const name = "incomes";
 
     const { register, formState: { errors }, control } = useFormContext<UserData>();
@@ -12,7 +16,7 @@ const IncomeSession = () => {
     });
 
     return (
-        <div className="panel dark:text-gray-300 dark:bg-gray-900">
+        <div className={`panel dark:text-gray-300 dark:bg-gray-900 ${disable ? 'disabled' : ''}`}>
             <h3 className="text-lg font-medium mb-4">Incomes (A)</h3>
 
             {fields.map((item, index) => (
