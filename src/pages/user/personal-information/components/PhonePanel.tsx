@@ -22,7 +22,6 @@ const PhonePanel = ({ disable = false }: Props) => {
 
             {fields.map((item, index) => (
                 <fieldset key={item.id} className="grid grid-cols-3 gap-4 border rounded-md p-4 mb-4">
-                    {/* <legend className="text-sm font-medium text-gray-600 dark:text-gray-400">Phone #{index + 1}</legend> */}
                     <legend className="text-sm font-medium text-gray-600 dark:text-gray-400 flex justify-between w-full gap-2 items-center">
                         <div>
                             Phone #{index + 1}
@@ -77,23 +76,13 @@ const PhonePanel = ({ disable = false }: Props) => {
                         <select
                             id={`${name}.${index}.preferred`}
                             {...register(`${name}.${index}.preferred`, { required: "Preferred status is required" })}
-                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color  "
+                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color"
                         >
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
                         </select>
                         <ErrorMessage errors={errors?.phones?.[index]?.preferred?.message} />
                     </div>
-
-                    {/* <div className="col-span-3">
-                        <button
-                            type="button"
-                            onClick={() => remove(index)}
-                            className="btn-danger px-4 py-2 mt-4 rounded-md"
-                        >
-                            Delete
-                        </button>
-                    </div> */}
                 </fieldset>
             ))}
 

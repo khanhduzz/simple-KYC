@@ -19,7 +19,7 @@ type Props = {
     disable?: boolean
 }
 
-const PersonalInformation = ({ disable = true }: Props) => {
+const PersonalInformation = ({ disable = false }: Props) => {
 
     const methods = useForm<UserData>();
     const [loading, setLoading] = useState(true);
@@ -32,6 +32,8 @@ const PersonalInformation = ({ disable = true }: Props) => {
                     throw new Error('Failed to fetch user data');
                 }
                 const data: UserData = await response.json();
+                console.log(data);
+                
                 methods.reset(data);
             } catch (error) {
                 console.error("Error fetching user data:", error);

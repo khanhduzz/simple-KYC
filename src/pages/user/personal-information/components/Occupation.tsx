@@ -23,7 +23,6 @@ const Occupation = ({ disable = false }: Props) => {
 
             {fields.map((item, index) => (
                 <fieldset key={item.id} className="grid grid-cols-3 gap-4 border rounded-md p-4 mb-4">
-                    {/* <legend className="text-sm font-medium text-gray-600 dark:text-gray-400">Occupation #{index + 1}</legend> */}
                     <legend className="text-sm font-medium text-gray-600 dark:text-gray-400 flex justify-between w-full gap-2 items-center">
                         <div>
                             Occupation #{index + 1}
@@ -78,16 +77,6 @@ const Occupation = ({ disable = false }: Props) => {
                         />
                         <ErrorMessage errors={errors?.occupation?.[index]?.toDate?.message} />
                     </div>
-
-                    {/* <div className="col-span-3">
-                        <button
-                            type="button"
-                            onClick={() => remove(index)}
-                            className="btn-danger px-4 py-2 mt-4 rounded-md"
-                        >
-                            Delete
-                        </button>
-                    </div> */}
                 </fieldset>
             ))}
 
