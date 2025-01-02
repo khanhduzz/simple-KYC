@@ -13,7 +13,7 @@ const adminRoutes: RouteObject[] = [
         children: [
             {
                 path: "",
-                element: <Navigate to="kyc-submissions" replace />,
+                element: <Navigate to="submissions" replace />,
             },
             {
                 path: ':id/pi',
@@ -28,7 +28,7 @@ const adminRoutes: RouteObject[] = [
                 element: <UserFormTabs />
             },
             {
-                path: 'kyc-submissions',
+                path: 'submissions',
                 element: <Submission />
             },
         ]

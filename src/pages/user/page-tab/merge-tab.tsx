@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import Breadcrumb from "../../../components/breadscrum/breadscum";
 import { UserData } from "../personal-information/model";
@@ -21,13 +21,31 @@ const breadcrumbItems = [
     { label: "KYC & Personal Information", current: true },
 ];
 
-type CombinedFormData = {
-    personalInfor: UserData
-};
 
 const UserFormTabs = () => {
     const [activeTab, setActiveTab] = useState("kyc");
-    const methods = useForm<CombinedFormData>();
+    const methods = useForm<UserData>();
+
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('https://dummyjson.com/c/1eff-1333-4834-a13f');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch user data');
+                }
+                const data: UserData = await response.json();
+                methods.reset(data);
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, [methods]);
 
     const onSubmit = methods.handleSubmit((data) => {
         console.log("Combined Form Data:", data);
@@ -57,17 +75,17 @@ const UserFormTabs = () => {
                     </div>
 
                     {activeTab === "kyc" && (
-                        <form className="mt-6 space-y-6 dark:text-gray-300 dark:bg-gray-900" onSubmit={onSubmit}>
+                        <div>
                             <IncomeSession />
                             <AssetSection />
                             <LiabilitySection />
                             <WealthSection />
                             <NetworthSection />
                             <InvestmentSection />
-                        </form>
+                        </div>
                     )}
                     {activeTab === "personalInfo" && (
-                        <form className="mt-6 space-y-6" onSubmit={onSubmit}>
+                        <div>
                             <BasicInformation />
                             <div className="border panel rounded-md p-4 dark:text-gray-300 dark:bg-gray-900">
                                 <h3 className="text-lg font-medium mb-4 text-blue-800 dark:text-gray-300">Contact Information</h3>
@@ -77,7 +95,7 @@ const UserFormTabs = () => {
                                 <Identification />
                                 <Occupation />
                             </div>
-                        </form>
+                        </div>
                     )}
 
                     <div className="text-right">

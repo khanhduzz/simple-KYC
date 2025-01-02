@@ -8,6 +8,12 @@ import WealthSection from "./components/WealthSection";
 import { UserData } from "../personal-information/model";
 import IncomeSession from "./components/IncomeSession";
 import { useEffect, useState } from "react";
+import BasicInformation from "../personal-information/components/BasicInformation";
+import AddressPanel from "../personal-information/components/AddressPanel";
+import EmailPanel from "../personal-information/components/EmailPanel";
+import PhonePanel from "../personal-information/components/PhonePanel";
+import Identification from "../personal-information/components/Identification";
+import Occupation from "../personal-information/components/Occupation";
 
 const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -58,6 +64,15 @@ const UserKYC = ({ disable = true }: Props) => {
 
             <FormProvider {...methods}>
                 <form className="mt-6 space-y-6 dark:text-gray-300 dark:bg-gray-900" onSubmit={onSubmit}>
+                    <BasicInformation />
+                    <div className="border panel rounded-md p-4 dark:text-gray-300 dark:bg-gray-900">
+                        <h3 className="text-lg font-medium mb-4 text-blue-800 dark:text-gray-300">Contact Information</h3>
+                        <AddressPanel />
+                        <EmailPanel />
+                        <PhonePanel />
+                        <Identification />
+                        <Occupation />
+                    </div>
                     <IncomeSession />
                     <AssetSession />
                     <LiabilitySection />

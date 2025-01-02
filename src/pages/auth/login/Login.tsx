@@ -9,7 +9,7 @@ const Login = () => {
     const isAuthenticated = useContext(AuthenticatedContext)
     const navigate = useNavigate();
 
-    const onSubmit = (data: LoginData) => {
+    const onSubmit = (dataLogin: LoginData) => {
         fetch('https://dummyjson.com/auth/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -32,8 +32,10 @@ const Login = () => {
                     name: "a",
                     email: "aa",
                     role: "user",
+                };
+                if (dataLogin.remember) {
+                    u.role = "admin";
                 }
-
                 isAuthenticated.setUser(u);
                 sessionStorage.setItem("user", JSON.stringify(u));
                 return navigate('/');

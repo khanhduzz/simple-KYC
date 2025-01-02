@@ -7,7 +7,7 @@ import { UserData } from "./model";
 import AddressPanel from "./components/AddressPanel";
 import PhonePanel from "./components/PhonePanel";
 import EmailPanel from "./components/EmailPanel";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 const breadcrumbItems = [
     { label: 'Home', href: '/' },

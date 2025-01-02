@@ -49,7 +49,7 @@ import Header from "../components/header/header";
 import Sidebar from "../components/sidebar/sidebar";
 import { Navigate, Outlet, useLocation } from "react-router";
 import Footer from "../components/footer/footer";
-import React, { useContext } from "react";
+import React, { Suspense, useContext } from "react";
 import { AuthenticatedContext } from "../shared/Authenticated";
 
 const Pages = () => {
