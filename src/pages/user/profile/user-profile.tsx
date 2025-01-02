@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Breadcrumb from '../../../components/breadscrum/breadscum';
 import { UserData } from '../personal-information/model';
 import SingleField from './components/SingleField';
+import { fetchUserData } from '../../../services/api';
 
 type Props = {}
 
@@ -18,11 +19,10 @@ const UserProfile = (props: Props) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://dummyjson.com/c/937c-69ba-4619-bbff');
-                const data: UserData = await response.json();
-                setUserData(data);
+                const response = await fetchUserData();
+                setUserData(response);
             } catch (error) {
-                console.error('Error fetching user data:', error);
+                console.error("Error fetching user data:", error);
             } finally {
                 setLoading(false);
             }

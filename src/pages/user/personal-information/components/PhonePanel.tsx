@@ -89,7 +89,7 @@ const PhonePanel = ({ disable = false }: Props) => {
             <button
                 type="button"
                 onClick={() =>
-                    append({ phoneNumber: '', phoneType: PhoneType.Personal, preferred: false })
+                    append({ phoneNumber: '', phoneType: PhoneType.Personal, preferred: PreferredType.False })
                 }
                 className="btn-primary px-4 py-2 mt-4 rounded-md"
             >

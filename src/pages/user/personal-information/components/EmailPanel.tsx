@@ -88,7 +88,7 @@ const EmailPanel = ({ disable = false }: Props) => {
             <button
                 type="button"
                 onClick={() =>
-                    append({ emailAddress: '', emailType: EmailType.Personal, preferred: false })
+                    append({ emailAddress: '', emailType: EmailType.Personal, preferred: PreferredType.False })
                 }
                 className="btn-primary px-4 py-2 mt-4 rounded-md"
             >

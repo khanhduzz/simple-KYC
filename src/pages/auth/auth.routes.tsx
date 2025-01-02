@@ -3,6 +3,7 @@ import Login from "./login/Login";
 import ResetPassword from "./reset-password/reset-password";
 import Auth from "./auth";
 import SignUp from "./sign-up/sign-up";
+import Logout from "./logout/logout";
 
 const authRoutes: RouteObject[] = [
     {
@@ -20,6 +21,10 @@ const authRoutes: RouteObject[] = [
             {
                 path: 'reset-password',
                 element: <ResetPassword/>
+            },
+            {
+                path: 'logout',
+                element: <Logout />
             }
         ]
 

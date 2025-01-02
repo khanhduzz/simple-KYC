@@ -1,15 +1,19 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { LoginData } from "../../user/personal-information/model";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthenticatedContext } from "../../../shared/Authenticated";
+import { showErrorToast, showSuccessToast } from "../../../utils/toastUtils";
+import PrimaryButton from "../../../components/button";
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<LoginData>();
+    const [loading, setLoading] = useState(false);
     const isAuthenticated = useContext(AuthenticatedContext)
     const navigate = useNavigate();
 
     const onSubmit = (dataLogin: LoginData) => {
+        setLoading(true)
         fetch('https://dummyjson.com/auth/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -29,8 +33,8 @@ const Login = () => {
                 console.log("Login successful");
                 sessionStorage.setItem('accessToken', data.accessToken);
                 let u: any = {
-                    name: "a",
-                    email: "aa",
+                    name: "Carter Zenke",
+                    email: "carter@harvard.edu.com",
                     role: "user",
                 };
                 if (dataLogin.remember) {
@@ -38,11 +42,14 @@ const Login = () => {
                 }
                 isAuthenticated.setUser(u);
                 sessionStorage.setItem("user", JSON.stringify(u));
+                showSuccessToast('Login successfully!');
                 return navigate('/');
             })
             .catch(error => {
+                showErrorToast("Login failed!")
                 console.error("Login failed", error);
-            });
+            })
+            .finally(() => setLoading(false));
     };
 
     return (
@@ -103,12 +110,7 @@ const Login = () => {
                         </div>
                         <Link to='/pages/auth/reset-password' className="ml-auto text-sm text-primary-700 hover:underline dark:text-primary-500">Lost Password?</Link>
                     </div>
-                    <button
-                        type="submit"
-                        className="w-full px-5 py-3 text-base font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 sm:w-auto dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                    >
-                        Login to your account
-                    </button>
+                    <PrimaryButton title="Login to your account" loading={loading} onClick={handleSubmit(onSubmit)}/>
                     <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
                         Forgot password? <Link to='/auth/sign-up' className="text-primary-700 hover:underline dark:text-primary-500">Sign-up</Link>
                     </div>

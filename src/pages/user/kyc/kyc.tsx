@@ -14,6 +14,8 @@ import EmailPanel from "../personal-information/components/EmailPanel";
 import PhonePanel from "../personal-information/components/PhonePanel";
 import Identification from "../personal-information/components/Identification";
 import Occupation from "../personal-information/components/Occupation";
+import { fetchUserData } from "../../../services/api";
+import { showSuccessToast } from "../../../utils/toastUtils";
 
 const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -34,11 +36,8 @@ const UserKYC = ({ disable = true }: Props) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://dummyjson.com/c/1eff-1333-4834-a13f');
-                if (!response.ok) {
-                    throw new Error('Failed to fetch user data');
-                }
-                const data: UserData = await response.json();
+                const data: UserData = await fetchUserData();
+                console.log(data);
                 methods.reset(data);
             } catch (error) {
                 console.error("Error fetching user data:", error);
@@ -51,6 +50,7 @@ const UserKYC = ({ disable = true }: Props) => {
     }, [methods]);
 
     const onSubmit = methods.handleSubmit((data) => {
+        showSuccessToast("Update successfully!")
         console.log(data);
     });
 

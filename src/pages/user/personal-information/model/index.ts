@@ -57,13 +57,13 @@ export type UserAddress = {
 export type UserEmail = {
   emailAddress: string;
   emailType: EmailType;
-  preferred: boolean;
+  preferred: PreferredType;
 };
 
 export type UserPhone = {
   phoneNumber: string;
   phoneType: PhoneType;
-  preferred: boolean;
+  preferred: PreferredType;
 };
 
 export type UserIdentification = {
@@ -79,8 +79,8 @@ export type UserOccupation = {
 };
 
 export enum PreferredType {
-  Yes = "yes",
-  No = "no",
+  True = "true",
+  False = "false",
 }
 
 export enum UserRole {

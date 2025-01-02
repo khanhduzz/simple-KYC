@@ -7,7 +7,9 @@ import { UserData } from "./model";
 import AddressPanel from "./components/AddressPanel";
 import PhonePanel from "./components/PhonePanel";
 import EmailPanel from "./components/EmailPanel";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { fetchUserData } from "../../../services/api";
+import { showErrorToast, showSuccessToast } from "../../../utils/toastUtils";
 
 const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -27,15 +29,10 @@ const PersonalInformation = ({ disable = false }: Props) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://dummyjson.com/c/1eff-1333-4834-a13f');
-                if (!response.ok) {
-                    throw new Error('Failed to fetch user data');
-                }
-                const data: UserData = await response.json();
-                console.log(data);
-                
+                const data: UserData = await fetchUserData();
                 methods.reset(data);
             } catch (error) {
+                showErrorToast(`Updating error: ${error}`)
                 console.error("Error fetching user data:", error);
             } finally {
                 setLoading(false);
@@ -46,6 +43,7 @@ const PersonalInformation = ({ disable = false }: Props) => {
     }, [methods]);
 
     const onSubmit = methods.handleSubmit((data) => {
+        showSuccessToast('Operation completed successfully!');
         console.log(data);
     });
 
