@@ -1,15 +1,20 @@
 import { Navigate, RouteObject } from "react-router";
-import PersonalInformation from "./personal-information/personal-information";
-import UserKYC from "./kyc/kyc";
-import User from "./user";
-import UserFormTabs from "./page-tab/merge-tab";
-import UserProfile from "./profile/user-profile";
-import NotFound from "../error/404";
+import { lazy, Suspense } from "react";
+import LoadingData from "../../components/loading";
+
+const PersonalInformation = lazy(() => import("./personal-information/personal-information"));
+const UserKYC = lazy(() => import("./kyc/kyc"));
+const User = lazy(() => import("./user"));
+const UserFormTabs = lazy(() => import("./page-tab/merge-tab"));
+const UserProfile = lazy(() => import("./profile/user-profile"));
 
 const userRoutes: RouteObject[] = [
     {
         path: 'user',
-        element: <User />,
+        element: (
+            <Suspense fallback={<LoadingData />}>
+                <User />,
+            </Suspense>),
         children: [
             {
                 path: "",
@@ -17,11 +22,11 @@ const userRoutes: RouteObject[] = [
             },
             {
                 path: ':id/pi',
-                element: <PersonalInformation disable={false}/>
+                element: <PersonalInformation disable={false} />
             },
             {
                 path: ':id/kyc',
-                element: <UserKYC disable={false}/>
+                element: <UserKYC disable={false} />
             },
             {
                 path: ':id/merge',

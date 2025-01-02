@@ -14,3 +14,8 @@
     https://dummyjson.com/c/0ed8-b0eb-4c5a-ba0f
     https://dummyjson.com/c/1eff-1333-4834-a13f
     https://dummyjson.com/c/8965-2d91-4ddb-a6b5
+
+- PUT:
+    https://dummyjson.com/c/9017-7199-4849-834e
+- POST:
+    https://dummyjson.com/c/0f58-73c5-497b-b430

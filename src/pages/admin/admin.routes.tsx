@@ -1,15 +1,21 @@
 import { Navigate, RouteObject } from "react-router";
-import Admin from "./admin";
-import Submission from "./kyc-submission/submission";
-import PersonalInformation from "../user/personal-information/personal-information";
-import UserKYC from "../user/kyc/kyc";
-import UserFormTabs from "../user/page-tab/merge-tab";
-import NotFound from "../error/404";
+import { lazy, Suspense } from "react";
+import LoadingData from "../../components/loading";
+
+const Submission = lazy(() => import("./kyc-submission/submission"));
+const UserKYC = lazy(() => import("../user/kyc/kyc"));
+const Admin = lazy(() => import("./admin"));
+const UserFormTabs = lazy(() => import("../user/page-tab/merge-tab"));
+const PersonalInformation = lazy(() => import("../user/personal-information/personal-information"))
 
 const adminRoutes: RouteObject[] = [
     {
         path: 'admin',
-        element: <Admin />,
+        element: (
+            <Suspense fallback={<LoadingData />}>
+                <Admin />
+            </Suspense>
+        ),
         children: [
             {
                 path: "",

@@ -16,6 +16,7 @@ import Identification from "../personal-information/components/Identification";
 import Occupation from "../personal-information/components/Occupation";
 import { fetchUserData } from "../../../services/api";
 import { showSuccessToast } from "../../../utils/toastUtils";
+import PrimaryButton from "../../../components/button";
 
 const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -80,7 +81,8 @@ const UserKYC = ({ disable = true }: Props) => {
                     <NetworthSection />
                     <InvestmentSection />
                     <div className="text-right">
-                        <button type="submit" className="btn-primary px-6 py-3 rounded-md">Submit</button>
+                        {/* <button type="submit" className="btn-primary px-6 py-3 rounded-md">Submit</button> */}
+                        <PrimaryButton title="Submit" loading={loading} onClick={onSubmit}/>
                     </div>
                 </form>
             </FormProvider>
