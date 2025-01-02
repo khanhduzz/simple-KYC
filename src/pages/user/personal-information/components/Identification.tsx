@@ -19,13 +19,19 @@ const Identification = ({ disable = false }: Props) => {
     });
 
     useEffect(() => {
-        append({
-            idType: IdentificationType.NationalIdCard,
-            expiryDate: "",
-            file: new File(["dummy content"], "example.txt", { type: "text/plain" })
-        })
+        if (fields.length === 0) {
+            append({
+                idType: IdentificationType.NationalIdCard,
+                expiryDate: "",
+                file: new File(["dummy content"], "example.txt", { type: "text/plain" }),
+            });
+        }
 
-        return () => remove(0);
+        return () => {
+            if (fields.length > 1) {
+                remove(0);
+            }
+        };
     }, [])
 
     return (

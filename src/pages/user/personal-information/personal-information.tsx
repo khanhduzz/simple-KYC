@@ -27,7 +27,7 @@ const PersonalInformation = ({ disable = false }: Props) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://dummyjson.com/c/3482-3c28-49a8-872e');
+                const response = await fetch('https://dummyjson.com/c/1eff-1333-4834-a13f');
                 if (!response.ok) {
                     throw new Error('Failed to fetch user data');
                 }

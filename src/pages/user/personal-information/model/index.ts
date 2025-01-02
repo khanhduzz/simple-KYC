@@ -5,7 +5,7 @@
 export type LoginData = {
   email: string;
   password: string;
-  remember: boolean;
+  remember: string;
 };
 
 /**
@@ -16,6 +16,7 @@ export type UserData = {
   basicInfor: UserBasicInfor;
   role: UserRole;
   organization?: string;
+  department?: string;
   phones: UserPhone[];
   emails: UserEmail[];
   addresses: UserAddress[];
@@ -76,6 +77,11 @@ export type UserOccupation = {
   fromDate: string;
   toDate: string;
 };
+
+export enum PreferredType {
+  Yes = "yes",
+  No = "no",
+}
 
 export enum UserRole {
   Admin = "admin",

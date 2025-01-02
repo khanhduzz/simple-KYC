@@ -28,7 +28,7 @@ const UserKYC = ({ disable = true }: Props) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://dummyjson.com/c/937c-69ba-4619-bbff');
+                const response = await fetch('https://dummyjson.com/c/1eff-1333-4834-a13f');
                 if (!response.ok) {
                     throw new Error('Failed to fetch user data');
                 }

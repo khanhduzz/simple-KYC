@@ -1,6 +1,6 @@
 import { useFormContext, useFieldArray } from "react-hook-form";
 import ErrorMessage from "../../../../components/error";
-import { EmailType, UserData } from "../model";
+import { EmailType, PreferredType, UserData } from "../model";
 
 type Props = {
     disable?: boolean
@@ -72,7 +72,9 @@ const EmailPanel = ({ disable = false }: Props) => {
                         <label htmlFor={`${name}.${index}.preferred`} className="block text-sm font-medium">Preferred</label>
                         <select
                             id={`${name}.${index}.preferred`}
-                            {...register(`${name}.${index}.preferred`, { required: "Preferred status is required" })}
+                            {...register(`${name}.${index}.preferred`, {
+                                required: "Preferred status is required",
+                            })}
                             className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color  "
                         >
                             <option value="true">Yes</option>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Breadcrumb from '../../../components/breadscrum/breadscum';
 import { UserData } from '../personal-information/model';
+import SingleField from './components/SingleField';
 
 type Props = {}
 
@@ -76,37 +77,18 @@ const UserProfile = (props: Props) => {
                     <form>
                         <fieldset disabled={true}>
                             <div className="grid grid-cols-6 gap-6">
-                                <div className="col-span-6 sm:col-span-3">
-                                    <label
-                                        htmlFor="first-name"
-                                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                    >
-                                        First Name
-                                    </label>
-                                    <input
-                                        type="text"
-                                        name="first-name"
-                                        id="first-name"
-                                        value={userData.basicInfor.firstName}
-                                        readOnly
-                                        className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                    />
-                                </div>
-                                {/* Repeat for other fields */}
-                                <div className="col-span-6 sm:col-span-3">
-                                    <label htmlFor="last-name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        Last Name
-                                    </label>
-                                    <input
-                                        type="text"
-                                        name="last-name"
-                                        id="last-name"
-                                        value={userData.basicInfor.lastName}
-                                        readOnly
-                                        className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                    />
-                                </div>
-                                {/* Add other fields similarly */}
+                                <SingleField infor={userData.basicInfor.firstName} name="first name" />
+                                <SingleField infor={userData.basicInfor.lastName} name="last name" />
+                                <SingleField infor={userData.addresses[0].country} name="country" />
+                                <SingleField infor={userData.addresses[0].city} name="city" />
+                                <SingleField infor={userData.addresses[0].street} name="address" />
+                                <SingleField infor={userData.emails[0].emailAddress} name="email" />
+                                <SingleField infor={userData.phones[0].phoneNumber} name="phone" />
+                                <SingleField infor={userData.basicInfor.dateOfBirth} name="birth day" />
+                                <SingleField infor={userData.organization ?? ''} name="organization" />
+                                <SingleField infor={userData.role} name="role" />
+                                <SingleField infor={userData.department ?? ''} name="deparment" />
+                                <SingleField infor={userData.addresses[0].postalCode ?? ''} name="zip/postal code" />
                                 <div className="col-span-6 sm:col-full">
                                     <a
                                         href='1/pi'
@@ -114,7 +96,7 @@ const UserProfile = (props: Props) => {
                                         type="submit">Edit
                                     </a>
                                     <a
-                                        href='1/kyc' 
+                                        href='1/kyc'
                                         className="ml-1 text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                                         type="submit">KYC
                                     </a>

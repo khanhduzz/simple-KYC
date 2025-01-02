@@ -1,6 +1,6 @@
 import { useFormContext, useFieldArray } from "react-hook-form";
 import ErrorMessage from "../../../../components/error";
-import { PhoneType, UserData } from "../model";
+import { PhoneType, PreferredType, UserData } from "../model";
 
 type Props = {
     disable?: boolean
