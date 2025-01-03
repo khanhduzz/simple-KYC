@@ -1,14 +1,13 @@
-import { Controller, useFormContext } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import { UserData } from "../model";
 import ErrorMessage from "../../../../components/error";
-import { useEffect, useState } from "react";
 
 type Props = {
     disable?: boolean
 }
 
 const BasicInformation = ({ disable = false }: Props) => {
-    const { control, watch, register, formState: { errors }, setValue } = useFormContext<UserData>();
+    const { register, formState: { errors }, setValue } = useFormContext<UserData>();
 
     return (
         <div className={`border panel rounded-md p-4 dark:text-gray-300 dark:bg-gray-900 ${disable ? 'disabled' : ''}`}>
@@ -67,7 +66,7 @@ const BasicInformation = ({ disable = false }: Props) => {
                     />
                     <ErrorMessage errors={errors.basicInfor?.dateOfBirth?.message} />
                 </div>
-                
+
                 <div>
                     <label htmlFor="age" className="block text-sm font-medium">Age</label>
                     <input

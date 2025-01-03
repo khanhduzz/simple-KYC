@@ -19,3 +19,5 @@
     https://dummyjson.com/c/9017-7199-4849-834e
 - POST:
     https://dummyjson.com/c/0f58-73c5-497b-b430
+- Get user submission:
+    https://dummyjson.com/c/09b1-4cde-45ee-b732

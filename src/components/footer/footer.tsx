@@ -1,5 +1,3 @@
-import React from "react";
-
 const Footer = () => {
     return (
         <>
@@ -65,8 +63,8 @@ const Footer = () => {
                 </div>
             </footer>
             <p className="my-10 text-sm text-center text-gray-500">
-                © 2019-2024 <a href="https://flowbite.com/" className="hover:underline"
-                               target="_blank">Flowbite.com</a>. All rights reserved.
+                © 2024 <a href="https://flowbite.com/" className="hover:underline"
+                               target="_blank">React...</a>Assignment.
             </p>
         </>
     )

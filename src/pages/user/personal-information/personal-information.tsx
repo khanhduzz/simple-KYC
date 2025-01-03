@@ -60,10 +60,6 @@ const PersonalInformation = ({ disable = false }: Props) => {
         }
     });
 
-    // if (loading) {
-    //     return <div className="text-center mt-6">Loading...</div>;
-    // }
-
     return (
         <div className={`grid grid-cols-1 px-4 pt-6 xl:gap-4 dark:bg-gray-900 ${disable ? 'disabled' : ''}`}>
             <Breadcrumb items={breadcrumbItems} />
@@ -80,12 +76,10 @@ const PersonalInformation = ({ disable = false }: Props) => {
                         <Occupation />
                     </div>
                     <div className="text-right">
-                        {/* <button type="submit" className="btn-primary px-6 py-3 rounded-md">Submit</button> */}
                         <PrimaryButton title="Submit" loading={loading} onClick={onSubmit} />
                     </div>
                 </form>
             </FormProvider>
-
         </div>
     )
 }

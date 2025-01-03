@@ -8,6 +8,7 @@ const Logout = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        // Need to call api here, but I make it simple with dummyjson
         sessionStorage.removeItem("accessToken");
         sessionStorage.removeItem("user");
         setUser(null);

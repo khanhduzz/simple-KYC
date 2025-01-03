@@ -1,4 +1,3 @@
-// src/utils/toastUtils.ts
 import { toast } from 'react-toastify';
 
 export const showSuccessToast = (message: string) => {

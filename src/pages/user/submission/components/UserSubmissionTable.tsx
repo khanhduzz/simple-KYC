@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
-import { SubmissionData } from "../../user/personal-information/model";
-import TableLine from "./TableLine";
-import { fetchSubmissions } from "../../../services/api";
-import { showErrorToast } from "../../../utils/toastUtils";
+import { showErrorToast } from "../../../../utils/toastUtils";
+import { UserSubmission } from "../../personal-information/model";
+import UserSubmissionTableLine from "./UserSubmissionTableLine";
+import { fetchUserSubmissions } from "../../../../services/api";
 
 type Props = {};
 
-const Table = (props: Props) => {
-    const [data, setData] = useState<SubmissionData[]>([]);
+const UserSubmissionTable = (props: Props) => {
+    const [data, setData] = useState<UserSubmission[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const result = await fetchSubmissions();
+                const result = await fetchUserSubmissions();
                 setData(result);
             } catch (error) {
                 showErrorToast("Error when fetching submissions!");
@@ -35,9 +35,12 @@ const Table = (props: Props) => {
                             Status
                         </th>
                         <th scope="col" className="px-6 py-3">
-                            Date
+                            Request Date
                         </th>
-                        <th scope="col" className="px-6 py-3 text-center">
+                        <th scope="col" className="px-6 py-3">
+                            Comfirm Date
+                        </th>
+                        <th scope="col" className="px-6 py-3">
                             Actions
                         </th>
                     </tr>
@@ -45,7 +48,7 @@ const Table = (props: Props) => {
                 <tbody>
                     {data.length > 0 ? (
                         data.map((submission, index) => (
-                            <TableLine key={index} submissionData={submission} setData={setData} />
+                            <UserSubmissionTableLine key={index} submissionData={submission} setData={setData} />
                         ))
                     ) : (
                         <tr>
@@ -60,4 +63,4 @@ const Table = (props: Props) => {
     );
 };
 
-export default Table;
+export default UserSubmissionTable;

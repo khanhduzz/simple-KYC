@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import PrimaryButton from "../../../components/button";
 import { showErrorToast, showSuccessToast } from "../../../utils/toastUtils";
+import { signUpUser } from "../../../services/api";
 
 interface SignUpData {
     email: string;
@@ -17,32 +18,20 @@ const SignUp = () => {
     const navigate = useNavigate();
     const termsAccepted = watch("term", false);
 
-    const onSubmit = (data: SignUpData) => {
+    const onSubmit = async (data: SignUpData) => {
         setLoading(true);
-        fetch('https://dummyjson.com/users/add', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                email: data.email,
-                password: data.password,
-            }),
-        })
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error(`Error: ${res.status}`);
-                }
-                return res.json();
-            })
-            .then(responseData => {
-                console.log("Signup successful");
-                showSuccessToast('Sign up successfully!');
-                navigate('/auth/login');
-            })
-            .catch(error => {
-                showErrorToast('Sign up failed!');
-                console.error("Signup failed", error);
-            })
-            .finally(() => setLoading(false))
+        try {
+            const user = await signUpUser(data.email, data.password);
+            console.log("Sign up: ", user);
+            showSuccessToast('Sign up successfully!');
+            navigate('/auth/login');
+        } catch (error) {
+            showErrorToast('Sign up failed!');
+            console.log("Error when sign up user: ", error);
+            
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -117,7 +106,7 @@ const SignUp = () => {
                             </label>
                         </div>
                     </div>
-                    <PrimaryButton title="Create account" onClick={handleSubmit(onSubmit)} term={termsAccepted} loading={loading}/>
+                    <PrimaryButton title="Create account" onClick={handleSubmit(onSubmit)} term={termsAccepted} loading={loading} />
                     <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
                         Already have an account? <Link to="/auth/login" className="text-primary-700 hover:underline dark:text-primary-500">Login here</Link>
                     </div>

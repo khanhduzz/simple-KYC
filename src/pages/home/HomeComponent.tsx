@@ -1,6 +1,5 @@
 const HomeComponent = () => {
     return (
-
         <div className="flex flex-col justify-center items-center px-6 mx-auto h-screen xl:px-0 dark:bg-gray-900">
             <div className="block mb-5 md:max-w-md">
                 <img src="/images/illustrations/maintenance.svg" alt="maintenance image"/>

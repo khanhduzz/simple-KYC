@@ -5,7 +5,6 @@ import LoadingData from "../../components/loading";
 const Submission = lazy(() => import("./kyc-submission/submission"));
 const UserKYC = lazy(() => import("../user/kyc/kyc"));
 const Admin = lazy(() => import("./admin"));
-const UserFormTabs = lazy(() => import("../user/page-tab/merge-tab"));
 const PersonalInformation = lazy(() => import("../user/personal-information/personal-information"))
 
 const adminRoutes: RouteObject[] = [
@@ -28,10 +27,6 @@ const adminRoutes: RouteObject[] = [
             {
                 path: ':id/kyc',
                 element: <UserKYC disable={true}/>
-            },
-            {
-                path: ':id/merge',
-                element: <UserFormTabs />
             },
             {
                 path: 'submissions',

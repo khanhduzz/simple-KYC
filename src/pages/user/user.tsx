@@ -1,4 +1,4 @@
-import { Suspense, useContext } from "react";
+import { useContext } from "react";
 import { Navigate, Outlet } from "react-router";
 import { AuthenticatedContext } from "../../shared/Authenticated";
 
@@ -9,7 +9,7 @@ const User = () => {
         return <Navigate to="/pages/error/forbidden" replace />;
     }
     return (
-            <Outlet />
+        <Outlet />
     )
 }
 

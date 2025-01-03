@@ -5,51 +5,36 @@ import { useContext, useState } from "react";
 import { AuthenticatedContext } from "../../../shared/Authenticated";
 import { showErrorToast, showSuccessToast } from "../../../utils/toastUtils";
 import PrimaryButton from "../../../components/button";
+import { loginUser } from "../../../services/api";
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<LoginData>();
     const [loading, setLoading] = useState(false);
-    const isAuthenticated = useContext(AuthenticatedContext)
+    const isAuthenticated = useContext(AuthenticatedContext);
     const navigate = useNavigate();
 
-    const onSubmit = (dataLogin: LoginData) => {
-        setLoading(true)
-        fetch('https://dummyjson.com/auth/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                username: "emilys",
-                password: "emilyspass",
-                expiresInMins: 30,
-            }),
-        })
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error(`Error: ${res.status}`);
-                }
-                return res.json();
-            })
-            .then(data => {
-                console.log("Login successful");
-                sessionStorage.setItem('accessToken', data.accessToken);
-                let u: any = {
-                    name: "Carter Zenke",
-                    email: "carter@harvard.edu.com",
-                    role: "user",
-                };
-                if (dataLogin.remember) {
-                    u.role = "admin";
-                }
-                isAuthenticated.setUser(u);
-                sessionStorage.setItem("user", JSON.stringify(u));
-                showSuccessToast('Login successfully!');
-                return navigate('/');
-            })
-            .catch(error => {
-                showErrorToast("Login failed!")
-                console.error("Login failed", error);
-            })
-            .finally(() => setLoading(false));
+    const onSubmit = async (dataLogin: LoginData) => {
+        setLoading(true);
+        try {
+            const data = await loginUser("emilys", "emilyspass");
+            sessionStorage.setItem("accessToken", data.accessToken);
+
+            const user = {
+                name: "Carter Zenke",
+                email: "carter@harvard.edu.com",
+                role: dataLogin.remember ? "admin" : "user",
+            };
+
+            isAuthenticated.setUser(user);
+            sessionStorage.setItem("user", JSON.stringify(user));
+            showSuccessToast("Login successfully!");
+            navigate("/");
+        } catch (error) {
+            showErrorToast("Login failed!");
+            console.error("Login failed", error);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -86,7 +71,7 @@ const Login = () => {
                             {...register("password", {
                                 required: "Password is required",
                                 minLength: { value: 12, message: "Password must be at least 12 characters" },
-                                maxLength: { value: 16, message: "Password must be at shorter than 17 characters" },
+                                maxLength: { value: 16, message: "Password must be shorter than 17 characters" },
                                 pattern: {
                                     value: /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@#&!]).{6,}$/,
                                     message: "Password must contain at least one letter, one digit, and one special character (@, #, &, !)."
@@ -106,11 +91,11 @@ const Login = () => {
                             />
                         </div>
                         <div className="ml-3 text-sm">
-                            <label htmlFor="remember" className="font-medium text-gray-900 dark:text-white">Remember me</label>
+                            <label htmlFor="remember" className="font-medium text-gray-900 dark:text-white">Remember me <i>(Temporal: check for Admin)</i></label>
                         </div>
-                        <Link to='/pages/auth/reset-password' className="ml-auto text-sm text-primary-700 hover:underline dark:text-primary-500">Lost Password?</Link>
+                        <Link to='/auth/reset-password' className="ml-auto text-sm text-primary-700 hover:underline dark:text-primary-500">Lost Password?</Link>
                     </div>
-                    <PrimaryButton title="Login to your account" loading={loading} onClick={handleSubmit(onSubmit)}/>
+                    <PrimaryButton title="Login to your account" loading={loading} onClick={handleSubmit(onSubmit)} />
                     <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
                         Forgot password? <Link to='/auth/sign-up' className="text-primary-700 hover:underline dark:text-primary-500">Sign-up</Link>
                     </div>

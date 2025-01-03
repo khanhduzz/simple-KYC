@@ -1,11 +1,12 @@
-import React from 'react'
+import styles from './LoadingData.module.css';
 
-type Props = {}
-
-const LoadingData = (props: Props) => {
+const LoadingData = () => {
   return (
-    <div>Loading...</div>
-  )
-}
+    <div className="loadingContainer">
+      <div className="spinner"></div>
+      <p>Loading, please wait...</p>
+    </div>
+  );
+};
 
-export default LoadingData
+export default LoadingData;

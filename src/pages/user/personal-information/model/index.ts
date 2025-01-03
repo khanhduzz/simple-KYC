@@ -8,6 +8,13 @@ export type LoginData = {
   remember: string;
 };
 
+export type ResetPasswordData = {
+  email: string;
+  password: string;
+  confirmPassword: string;
+  accept: boolean;
+};
+
 /**
  * User information =======================================================
  */
@@ -201,4 +208,22 @@ export enum SubmissionAction {
   Approve = "Approve",
   Reject = "Reject",
   Waiting = "Waiting",
+}
+
+/**
+ * User Submission =================================================================
+ */
+
+export type UserSubmission = {
+  id: string;
+  name: string;
+  requestDate: string;
+  confirmDate?: string;
+  status: SubmissionAction;
+  action: UserSubmissionAction;
+};
+
+export enum UserSubmissionAction {
+  Cancel = "Canceled",
+  Request = "Requested",
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Breadcrumb from '../../../components/breadscrum/breadscum';
 import { UserData } from '../personal-information/model';
 import SingleField from './components/SingleField';
@@ -14,7 +14,6 @@ const breadcrumbItems = [
 
 const UserProfile = (props: Props) => {
     const [userData, setUserData] = useState<UserData | null>(null);
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -23,17 +22,11 @@ const UserProfile = (props: Props) => {
                 setUserData(response);
             } catch (error) {
                 console.error("Error fetching user data:", error);
-            } finally {
-                setLoading(false);
             }
         };
 
         fetchData();
     }, []);
-
-    if (loading) {
-        return <div>Loading...</div>;
-    }
 
     if (!userData) {
         return <div>Error loading user data</div>;

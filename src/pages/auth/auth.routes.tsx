@@ -8,26 +8,25 @@ import Logout from "./logout/logout";
 const authRoutes: RouteObject[] = [
     {
         path: 'auth',
-        element: <Auth/>,
+        element: <Auth />,
         children: [
             {
                 path: 'login',
-                element: <Login/>
+                element: <Login />
             },
             {
                 path: 'sign-up',
-                element: <SignUp/>
+                element: <SignUp />
             },
             {
                 path: 'reset-password',
-                element: <ResetPassword/>
+                element: <ResetPassword />
             },
             {
                 path: 'logout',
                 element: <Logout />
-            }
+            },
         ]
-
     }
 ]
 

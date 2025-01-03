@@ -26,12 +26,6 @@ const Identification = ({ disable = false }: Props) => {
                 file: new File(["dummy content"], "example.txt", { type: "text/plain" }),
             });
         }
-
-        return () => {
-            if (fields.length > 1) {
-                remove(0);
-            }
-        };
     }, [])
 
     return (
@@ -86,7 +80,7 @@ const Identification = ({ disable = false }: Props) => {
                             id={`${name}.${index}.id-file`}
                             className="text-sm w-full mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color  "
                             {...register(`${name}.${index}.file`
-                                // , { required: "Document upload is required" }
+                                , { required: "Document upload is required" }
                             )
                             }
                         />

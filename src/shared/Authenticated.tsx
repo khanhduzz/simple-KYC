@@ -31,8 +31,6 @@ const AuthenticatedProvider = ({ children }: { children: ReactElement }) => {
     const [user, setUser] = useState<User | null>(initialUser);
     const [loading, setLoading] = useState<boolean>(true);
 
-    console.log("Authen run");
-
     return (
         <AuthenticatedContext.Provider value={{ user, loading, setUser }}>
             {children}

@@ -10,7 +10,7 @@ const Occupation = ({ disable = false }: Props) => {
 
     const name = "occupation";
 
-    const { register, formState: { errors }, control } = useFormContext<UserData>();
+    const { watch, register, formState: { errors }, control } = useFormContext<UserData>();
 
     const { fields, append, remove } = useFieldArray({
         control,
@@ -62,7 +62,7 @@ const Occupation = ({ disable = false }: Props) => {
                             type="date"
                             id={`${name}.${index}.fromDate`}
                             {...register(`${name}.${index}.fromDate`, { required: "Occupation start date is required" })}
-                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color  "
+                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color"
                         />
                         <ErrorMessage errors={errors?.occupation?.[index]?.fromDate?.message} />
                     </div>
@@ -72,11 +72,19 @@ const Occupation = ({ disable = false }: Props) => {
                         <input
                             type="date"
                             id={`${name}.${index}.toDate`}
-                            {...register(`${name}.${index}.toDate`)}
-                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color  "
+                            {...register(`${name}.${index}.toDate`, {
+                                required: "Occupation end date is required",
+                                validate: (toDate) => {
+                                    const fromDate = watch(`${name}.${index}.fromDate`);
+                                    if (!fromDate) return "Start date must be selected first";
+                                    return new Date(toDate) > new Date(fromDate) || "End date must be later than start date";
+                                }
+                            })}
+                            className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-color"
                         />
                         <ErrorMessage errors={errors?.occupation?.[index]?.toDate?.message} />
                     </div>
+
                 </fieldset>
             ))}
 
